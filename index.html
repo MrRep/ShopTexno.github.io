@@ -1,11 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TRog</title>
+
+        <!-- Підключення шрифтів -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Candal&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <header>
+            <div class="HeaderContainer">
+                <!-- Фонова хвиля -->
+                <div class="wave-container">
+                    <svg width="100%" height="100%" viewBox="0 0 682 675"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H275L681.5 675H367L0 0Z" fill="#31498A" />
+                    </svg>
+                </div>
 
+                <!-- Старе меню -->
+                <nav class="navbar old-nav visible">
+                    <div class="logo" translate="no">TRog</div>
+                    <div class="menu">
+                        <a href="#">Privat</a>
+                        <a href="#">Product</a>
+                        <a href="#" class="profile-btn">Profile</a>
+                    </div>
+                </nav>
+
+                <!-- Нове меню з пошуком та кошиком -->
+                <nav class="navbar new-nav hidden">
+                    <div class="nav-content">
+                        <!-- Блок пошуку з випадаючими підказками -->
+                        <div class="search-box">
+                            <input type="text" placeholder="Пошук..."
+                                id="searchInput" />
+                            <div class="search-suggestions">
+                                <!-- Динамічний список категорій -->
+                                <ul id="suggestionsList"></ul>
+                            </div>
+                        </div>
+                        <div class="cart-icon"></div>
+                    </div>
+                </nav>
+
+                <!-- Блок "Підтримка - чат" -->
+                <div class="chat-support">
+                    <span class="chat-text">Підтримка -</span>
+                    <div class="cart-chat hidden"></div>
+                </div>
+
+                <!-- Контент шапки -->
+                <div class="header-content">
+                    <div class="left-content">
+                        <h1>TRog</h1>
+                        <p>Онлайн магазин самих нових комп'ютерних
+                            технологій</p>
+                        <a href="#products" class="shop-btn">Перейти до
+                            покупок</a>
+                    </div>
+                    <div class="right-content">
+                        <img src="/Fotos/67bb9384b70ee6000971a43a 1.png"
+                            alt="GPU" class="gpu-image" />
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="products" class="FirstContainer">
+
+                <div class="SdShadow">
+                    <!-- Slider Section -->
+                    <div class="SdSliderSection">
+
+                        <div class="SdSliderWrapper">
+                            <div class="SdSlider">
+                                <!-- Приклад картки товару -->
+                                <div class="SdProductCard">
+                                    <div class="SdProductImageWrapper">
+                                        <img src="path/to/product1.jpg"
+                                            alt="Product 1"
+                                            class="SdProductImage">
+                                        <div class="SdDiscountBadge">-20%</div>
+                                    </div>
+                                    <div class="SdProductInfo">
+                                        <h3 class="SdProductName">Назва товару
+                                            1</h3>
+                                        <p class="SdProductPrice">$100</p>
+                                    </div>
+                                    <button class="SdAddToCartBtn">Додати до
+                                        кошика</button>
+                                </div>
+                                <!-- Додаткові картки можна додати сюди -->
+                            </div>
+                        </div>
+
+                        <!-- Навігаційні точки -->
+                        <div class="SdPagination">
+                            <span class="SdDot active" data-index="0"></span>
+                            <span class="SdDot" data-index="1"></span>
+                            <span class="SdDot" data-index="2"></span>
+                            <span class="SdDot" data-index="3"></span>
+                            <span class="SdDot" data-index="4"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Модальне вікно для Quick View -->
+                    <div class="SdModal" id="SdModal">
+                        <div class="SdModalContent">
+                            <span class="SdModalClose">&times;</span>
+                            <div class="SdModalBody">
+                                <h3 class="SdModalProductName">Назва товару</h3>
+                                <p class="SdModalProductInfo">Коротка інформація
+                                    про товар.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фоновий SVG (залишається окремим елементом) -->
+                <svg width="100%" height="100%" viewBox="0 0 1155 540"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 0C0 0 69.3581 343.744 519.5 381.5C969.642 419.256 1154.86 460.164 1154.86 460.164C1154.86 460.164 1155.17 514.83 1154.86 539.5C1154.86 539.5 880.5 460.164 519.5 443C158.5 425.836 0 194.5 0 194.5V0Z"
+                        fill="#31498A" />
+                </svg>
+
+            </div>
+        </main>
+
+        <script src="Index.js"></script>
     </body>
 </html>
