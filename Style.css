@@ -1,711 +1,529 @@
-/* =============================================
-   Підключення шрифтів та глобальні стилі
-============================================= */
+/* =========================================================
+   1. Імпорт шрифтів та глобальні стилі (reset)
+========================================================= */
 @import url("https://fonts.googleapis.com/css2?family=Candal&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #0f131a;
-    color: white;
-    font-family: "Inknut Antiqua", serif;
+  background-color: #0f131a;
+  color: white;
+  font-family: "Inknut Antiqua", serif;
 }
 
-/* =============================================
-   Header Container та фонова хвиля
-============================================= */
+/* =========================================================
+   2. Контейнер шапки (Header Container) та фонова хвиля
+========================================================= */
 .HeaderContainer {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: #0f131a;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f131a;
 }
 
 .wave-container {
-    position: absolute;
-    top: 0;
-    left: 5%;
-    width: 95%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 95%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .wave {
-    width: 100%;
-    height: 95%;
-    display: block;
+  width: 100%;
+  height: 95%;
+  display: block;
 }
 
-/* =============================================
-   Загальні стилі для навігаційних меню
-============================================= */
+/* =========================================================
+   3. Загальні стилі для навігаційних меню (navbar)
+========================================================= */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
-    background: none;
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: none;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
+/* Для плавної появи та приховування меню */
 .hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
 }
-
 .visible {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 
-/* =============================================
-   Старе меню (.old-nav)
-============================================= */
+/* ---------------------------------------------------------
+   3.1. Старе меню (.old-nav)
+--------------------------------------------------------- */
 .old-nav .logo {
-    font-size: 32px;
-    font-weight: 400;
-    user-select: none;
+  font-size: 32px;
+  font-weight: 400;
+  user-select: none;
 }
 
 .old-nav .menu a {
-    display: inline-block;
-    position: relative;
-    line-height: 1.2;
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    margin-left: 40px;
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+  display: inline-block;
+  position: relative;
+  line-height: 1.2;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  margin-left: 40px;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .old-nav .menu a:hover {
-    color: #31498a;
-    transform: translateY(-2px);
+  color: #31498a;
+  transform: translateY(-2px);
 }
 
+/* Лінія під посиланнями при наведенні */
 .old-nav .menu a:not(.profile-btn)::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: #31498a;
-    transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #31498a;
+  transition: width 0.3s ease;
 }
 
 .old-nav .menu a:not(.profile-btn):hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 /* Кнопка "Profile" */
 .old-nav .profile-btn {
-    display: inline-block;
-    background-color: #31498a;
-    color: #fff;
-    padding: 13px 25px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-family: "Candal", sans-serif;
-    font-weight: bold;
-    margin-left: 30px;
-    line-height: 1.2;
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease,
-        color 0.3s ease;
+  display: inline-block;
+  background-color: #31498a;
+  color: #fff;
+  padding: 13px 25px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: "Candal", sans-serif;
+  font-weight: bold;
+  margin-left: 30px;
+  line-height: 1.2;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 }
 
 .old-nav .profile-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    background-color: #2b3a7b;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: #ccc !important;
+  transform: translateY(-3px) scale(1.05);
+  background-color: #2b3a7b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #ccc !important;
 }
 
-/* =============================================
-   Кнопка "Перейти до покупок" (.shop-btn)
-============================================= */
-.shop-btn {
-    width: 254px;
-    height: 70px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 22px;
-    font-family: "Candal", sans-serif;
-    font-weight: bold;
-    color: #fff;
-    position: relative;
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.shop-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("/button-bg.svg") no-repeat center / cover;
-    z-index: -1;
-    transition: transform 0.3s ease;
-}
-
-.shop-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    color: #ccc;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.shop-btn:hover::before {
-    transform: scale(1.05);
-}
-
-/* =============================================
-   Нове меню (.new-nav)
-============================================= */
+/* ---------------------------------------------------------
+   3.2. Нове меню (.new-nav) із пошуком та кошиком
+--------------------------------------------------------- */
 .new-nav .nav-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: right;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: right; /* або flex-end */
 }
 
 /* Поле пошуку з випадаючими підказками */
 .search-box {
-    position: relative; /* Для позиціонування випадаючих підказок */
-    display: flex;
-    align-items: center;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    padding: 5px 15px;
-    background: none;
-    flex: 1;
-    max-width: 400px;
-    margin-right: 20px;
-    transition: border-color 0.3s ease;
-    backdrop-filter: blur(10px);
+  position: relative; /* Для позиціонування випадаючих підказок */
+  display: flex;
+  align-items: center;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 5px 15px;
+  background: none;
+  flex: 1;
+  max-width: 400px;
+  margin-right: 20px;
+  transition: border-color 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .search-box:hover {
-    border-color: #2f3a63;
+  border-color: #2f3a63;
 }
 
 .search-box input {
-    background: none;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-size: 18px;
-    flex: 1;
-    padding: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+  flex: 1;
+  padding: 5px;
 }
 
 .search-box input::placeholder {
-    color: #bbb;
+  color: #bbb;
 }
-
-/* ... Весь твій існуючий CSS ... */
 
 /* Випадаючі підказки пошуку */
 .search-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    border: 2px solid #2f3a63;
-    border-radius: 8px;
-    margin-top: 5px;
-    padding: 5px 0;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-    z-index: 9999;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 2px solid #2f3a63;
+  border-radius: 8px;
+  margin-top: 5px;
+  padding: 5px 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 9999;
 }
 
 /* Коли підказки показані */
 .search-suggestions.show {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 
 .search-suggestions ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    /* Обмежуємо висоту, щоб показувати ~4-5 пунктів */
-    max-height: 200px;
-    overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px; /* Ліміт висоти, щоб відображати ~4-5 пунктів */
+  overflow-y: auto;
 }
 
 .search-suggestions li a {
-    display: block;
-    padding: 8px 15px;
-    color: #fff;
-    text-decoration: none;
-    font-family: "Inknut Antiqua", serif;
-    transition: background-color 0.2s ease;
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Inknut Antiqua", serif;
+  transition: background-color 0.2s ease;
 }
 
 .search-suggestions li a:hover {
-    background-color: #2f3a63;
+  background-color: #2f3a63;
 }
 
-/* =============================================
-   Блок "Нове меню" - Кошик
-============================================= */
+/* Іконка кошика (cart-icon) */
 .cart-icon {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 25%;
-    background: none;
-    background-image: url("/Fotos/Adobe Express - file (2) (1) 1.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 90% 90%;
-    cursor: pointer;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 25%;
+  background: none;
+  background-image: url("/Fotos/Adobe Express - file (2) (1) 1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90% 90%;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .cart-icon:hover {
-    transform: scale(1.1);
-    border-color: #31498a;
+  transform: scale(1.1);
+  border-color: #31498a;
 }
 
-/* =============================================
-   Блок "Підтримка - чат"
-============================================= */
+/* =========================================================
+   4. Блок "Підтримка - чат" (.chat-support)
+========================================================= */
 .chat-support {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-/* Іконка чату */
+/* Іконка чату (cart-chat) */
 .cart-chat {
-    width: 50px;
-    height: 50px;
-    background: none;
-    background-image: url("/Fotos/Chat_Icon_Clipart_PNG_Images__Vector_Chat_Icon__Chat_Icons__Comment_Icon__Typing_Icon_PNG_Image_For_Free_Download-removebg-preview (1) 1.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 90% 90%;
-    cursor: pointer;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+  width: 50px;
+  height: 50px;
+  background: none;
+  background-image: url("/Fotos/Chat_Icon_Clipart_PNG_Images__Vector_Chat_Icon__Chat_Icons__Comment_Icon__Typing_Icon_PNG_Image_For_Free_Download-removebg-preview (1) 1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90% 90%;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .cart-chat:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-/* Текст для "Підтримка -", що виповзає */
+/* Текст "Підтримка -", що плавно з’являється при hover */
 .chat-text {
-    position: relative;
-    top: -5px;
-    margin-right: 10px;
-    color: #fff;
-    font-size: 18px;
-    /* Початково схований: зміщений праворуч та прозорий */
-    opacity: 0;
-    transform: translateX(-50px);
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
+  position: relative;
+  top: -5px;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-/* При наведенні на контейнер .chat-support текст з'являється */
+/* Показ тексту при наведенні на .chat-support */
 .chat-support:hover .chat-text {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* =============================================
-   Header Content (головний контент шапки)
-============================================= */
+/* =========================================================
+   5. Контент шапки (header-content)
+========================================================= */
 .header-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 50px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards 0.5s;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards 0.5s; /* Затримка 0.5s */
 }
 
 .left-content {
-    position: relative;
-    max-width: 50%;
-    top: 5%;
+  position: relative;
+  max-width: 50%;
+  top: 5%;
 }
 
 .left-content h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-    font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .left-content p {
-    position: relative;
-    top: -40px;
-    left: 3%;
-    font-size: 22px;
-    margin-bottom: 30px;
-    max-width: 400px;
-    line-height: 1.4;
+  position: relative;
+  top: -40px;
+  left: 3%;
+  font-size: 22px;
+  margin-bottom: 30px;
+  max-width: 400px;
+  line-height: 1.4;
 }
 
 .right-content {
-    position: relative;
-    right: 5%;
-    max-width: 100%;
-    display: flex;
-    justify-content: flex-end;
+  position: relative;
+  right: 5%;
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .gpu-image {
-    position: relative;
-    width: 800px;
-    max-width: 100%;
-    height: auto;
+  position: relative;
+  width: 800px;
+  max-width: 100%;
+  height: auto;
 }
 
-/* =============================================
-   Блок нижче шапки (#products)
-============================================= */
+/* =========================================================
+   6. Кнопка "Перейти до покупок" (.shop-btn)
+========================================================= */
+.shop-btn {
+  width: 254px;
+  height: 70px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: "Candal", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
-/* =============================================
-   Адаптивність (Media Queries)
-============================================= */
+.shop-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/button-bg.svg") no-repeat center / cover;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.shop-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  color: #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.shop-btn:hover::before {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   7. Адаптивні стилі (Media Queries)
+========================================================= */
 @media (max-width: 768px) {
-    .navbar {
-        height: 60px;
-        padding: 10px;
-    }
-    .old-nav .logo {
-        font-size: 24px;
-    }
-    .old-nav .menu a {
-        font-size: 16px;
-    }
-    .old-nav .profile-btn {
-        font-size: 16px;
-    }
-    .new-nav .nav-content {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    .user-icon,
-    .cart-icon {
-        width: 40px;
-        height: 40px;
-    }
-    .search-box {
-        max-width: 300px;
-    }
-    .search-box input {
-        font-size: 14px;
-    }
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-        height: auto;
-    }
-    .left-content,
-    .right-content {
-        max-width: 100%;
-        margin-bottom: 20px;
-        top: 0;
-    }
-    .left-content h1 {
-        font-size: 32px;
-    }
-    .left-content p {
-        font-size: 16px;
-        margin-bottom: 20px;
-        top: 0;
-        left: 0;
-    }
-    .shop-btn {
-        font-size: 16px;
-        width: 200px;
-        height: 60px;
-    }
-    .gpu-image {
-        width: 250px;
-    }
+  /* Зміни висоти та відступів для меншого екрану */
+  .navbar {
+    height: 60px;
+    padding: 10px;
+  }
+
+  /* Зменшення розміру шрифту лого та пунктів меню */
+  .old-nav .logo {
+    font-size: 24px;
+  }
+  .old-nav .menu a {
+    font-size: 16px;
+  }
+  .old-nav .profile-btn {
+    font-size: 16px;
+  }
+
+  /* Нове меню (зменшуємо іконки) */
+  .new-nav .nav-content {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .user-icon,
+  .cart-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Пошуковий блок */
+  .search-box {
+    max-width: 300px;
+  }
+  .search-box input {
+    font-size: 14px;
+  }
+
+  /* Контент шапки */
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    height: auto;
+  }
+  .left-content,
+  .right-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+    top: 0;
+  }
+  .left-content h1 {
+    font-size: 32px;
+  }
+  .left-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    top: 0;
+    left: 0;
+  }
+  .shop-btn {
+    font-size: 16px;
+    width: 200px;
+    height: 60px;
+  }
+  .gpu-image {
+    width: 250px;
+  }
 }
 
-/* =============================================
-   Ключові кадри анімацій
-============================================= */
+/* =========================================================
+   8. Анімації (Keyframes)
+========================================================= */
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.FirstContainer {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: #0f131a;
-}
-
-.FirstContainer svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.SdShadow {
-    position: absolute;
-    width: 100%;
-    height: 590px;
-    top: 15%;
-
-    background: rgba(217, 217, 217, 0.05);
-    backdrop-filter: blur(10px);
-}
-
-/* =============================================
-   Стилі слайдера (інтеграція з існуючим CSS)
-============================================= */
-
-/* Секція слайдера всередині блоку .SdShadow */
-.SdSliderSection {
-    position: relative;
-    top: 50%;
-    padding: 20px;
-    overflow: hidden;
+  0% {
     opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-    z-index: 2;
-}
-
-.SdSliderSection.visible {
+    transform: translateX(30px);
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0);
-}
-
-/* Контейнер слайдера */
-.SdSliderWrapper {
-    overflow: hidden;
-    position: relative;
-}
-
-.SdSlider {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-/* Картки товарів */
-.SdProductCard {
-    flex: 0 0 20%; /* Приблизно 5 карток в одному "екрані" */
-    padding: 10px;
-    box-sizing: border-box;
-    position: relative;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    cursor: pointer;
-    background: #fff; /* або інший фон для картки */
-    border-radius: 4px;
-}
-
-.SdProductCard:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.SdProductImageWrapper {
-    position: relative;
-    overflow: hidden;
-}
-
-.SdProductImage {
-    width: 100%;
-    transition: transform 0.3s ease;
-}
-
-.SdDiscountBadge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    color: #fff;
-    padding: 5px 8px;
-    font-size: 12px;
-    border-radius: 4px;
-    z-index: 1;
-}
-
-.SdProductInfo {
-    margin-top: 10px;
-}
-
-.SdProductName {
-    font-size: 16px;
-    margin: 0;
-    color: #31498a;
-}
-
-.SdProductPrice {
-    font-size: 14px;
-    color: #31498a;
-}
-
-/* Кнопка "Додати до кошика" */
-.SdAddToCartBtn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background: #31498a;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.SdAddToCartBtn:hover {
-    background: #24376b;
-}
-
-/* Навігаційні точки слайдера */
-.SdPagination {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.SdDot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #ccc;
-    border-radius: 50%;
-    margin: 0 2px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.SdDot.active {
-    background: #31498a;
-}
-
-/* Модальне вікно для Quick View */
-.SdModal {
-    display: none;
-    position: fixed;
-    z-index: 11000; /* Поверх всіх інших елементів */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.SdModalContent {
-    background: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
-    border-radius: 8px;
-}
-
-.SdModalClose {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
+    transform: translateX(0);
+  }
 }

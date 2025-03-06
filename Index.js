@@ -1,39 +1,38 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-  // ===================== Перемикання меню та чату =====================
+  /* ======================================================================
+     1. Перемикання меню та елемента чату при скролі
+  ====================================================================== */
   window.addEventListener("scroll", function () {
     const productsSection = document.getElementById("products");
     if (!productsSection) return;
     const rect = productsSection.getBoundingClientRect();
 
     if (rect.top <= 0) {
-      // Ховаємо старе меню
+      // Ховаємо старе меню, показуємо нове та елемент чату
       document.querySelector(".old-nav").classList.remove("visible");
       document.querySelector(".old-nav").classList.add("hidden");
 
-      // Показуємо нове меню
       document.querySelector(".new-nav").classList.remove("hidden");
       document.querySelector(".new-nav").classList.add("visible");
 
-      // Показуємо елемент чату
       document.querySelector(".cart-chat").classList.remove("hidden");
       document.querySelector(".cart-chat").classList.add("visible");
     } else {
-      // Показуємо старе меню
+      // Показуємо старе меню, ховаємо нове та елемент чату
       document.querySelector(".old-nav").classList.remove("hidden");
       document.querySelector(".old-nav").classList.add("visible");
 
-      // Ховаємо нове меню
       document.querySelector(".new-nav").classList.remove("visible");
       document.querySelector(".new-nav").classList.add("hidden");
 
-      // Ховаємо елемент чату
       document.querySelector(".cart-chat").classList.remove("visible");
       document.querySelector(".cart-chat").classList.add("hidden");
     }
   });
 
-  // ===================== Розширений пошук =====================
+  /* ======================================================================
+     2. Розширений пошук (підказки за категоріями)
+  ====================================================================== */
   const categories = [
     "Ноутбуки",
     "Материнські плати",
@@ -99,57 +98,95 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ===================== Слайдер =====================
-  // Отримання елементів слайдера
-  const sliderSection = document.querySelector('.SdSliderSection');
-  const slider = document.querySelector('.SdSlider');
-  const dots = document.querySelectorAll('.SdDot');
+  /* ======================================================================
+     3. Слайдер та взаємодія з картками товарів
+  ====================================================================== */
+  // Функція ініціалізації слайдера для конкретного контейнера
+  function initSlider(sliderContainer) {
+    const sliderSection = sliderContainer.querySelector('.SdSliderSection');
+    const slider = sliderContainer.querySelector('.SdSlider');
+    const dots = sliderContainer.querySelectorAll('.SdDot');
+    const leftArrow = sliderContainer.querySelector('.SdSliderArrow.left');
+    const rightArrow = sliderContainer.querySelector('.SdSliderArrow.right');
+    let currentIndex = 0;
+
+    // Функція оновлення трансформації слайдера та активного стану точок
+    function updateSlider() {
+      // Приклад трансформації: кожен слайд займає 20% ширини контейнера (налаштуйте за потребою)
+      slider.style.transform = `translateX(-${currentIndex * 20}%)`;
+      dots.forEach(d => d.classList.remove('active'));
+      if (dots[currentIndex]) {
+        dots[currentIndex].classList.add('active');
+      }
+    }
+
+    // Обробка кліків по навігаційним точкам
+    dots.forEach(dot => {
+      dot.addEventListener('click', function (e) {
+        currentIndex = parseInt(e.target.getAttribute('data-index'));
+        updateSlider();
+      });
+    });
+
+    // Обробка кліків по стрілках
+    if (leftArrow) {
+      leftArrow.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      });
+    }
+
+    if (rightArrow) {
+      rightArrow.addEventListener('click', () => {
+        if (currentIndex < dots.length - 1) {
+          currentIndex++;
+          updateSlider();
+        }
+      });
+    }
+
+    // IntersectionObserver для плавного появи слайдера при скролі
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sliderSection.classList.add('visible');
+          observer.unobserve(sliderSection);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (sliderSection) {
+      observer.observe(sliderSection);
+    }
+
+    // Фолбек: якщо через 2 секунди клас 'visible' не додано, додаємо його вручну
+    setTimeout(() => {
+      if (!sliderSection.classList.contains('visible')) {
+        sliderSection.classList.add('visible');
+      }
+    }, 2000);
+  }
+
+  // Ініціалізуємо кожен слайдер, який має клас .FirstContainer
+  const sliderContainers = document.querySelectorAll('.FirstContainer');
+  sliderContainers.forEach(container => {
+    // Переконайтеся, що контейнер має елемент слайдера
+    if (container.querySelector('.SdSliderSection')) {
+      initSlider(container);
+    }
+  });
+
+  /* ======================================================================
+     4. Модальне вікно для Quick View
+  ====================================================================== */
   const productCards = document.querySelectorAll('.SdProductCard');
   const modal = document.getElementById('SdModal');
   const modalClose = document.querySelector('.SdModalClose');
-  const cartIcon = document.querySelector('.cart-icon');
-  let cartCount = 0;
-
-  console.log("Налаштовуємо IntersectionObserver для слайдера.");
-
-  // IntersectionObserver для плавного появи слайдера при скролі
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      console.log("Entry для слайдера:", entry.isIntersecting);
-      if (entry.isIntersecting) {
-        sliderSection.classList.add('visible');
-        observer.unobserve(sliderSection);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  if (sliderSection) {
-    observer.observe(sliderSection);
-  } else {
-    console.error("Секція слайдера не знайдена!");
-  }
-
-  // Фолбек: якщо через 2 секунди клас не додано, додаємо його вручну
-  setTimeout(() => {
-    if (!sliderSection.classList.contains('visible')) {
-      console.log("Фолбек: клас 'visible' не додано через IntersectionObserver, додаємо вручну.");
-      sliderSection.classList.add('visible');
-    }
-  }, 2000);
-
-  // Обробка кліків по точках навігації слайдера
-  dots.forEach(dot => {
-    dot.addEventListener('click', function (e) {
-      const index = parseInt(e.target.getAttribute('data-index'));
-      slider.style.transform = `translateX(-${index * 20}%)`;
-      dots.forEach(d => d.classList.remove('active'));
-      e.target.classList.add('active');
-    });
-  });
-
-  // Обробка кліку по картці товару для відкриття модального вікна (Quick View)
   productCards.forEach(card => {
     card.addEventListener('click', function (e) {
+      // Якщо натиснута кнопка "Додати до кошика", не відкривати модальне вікно
       if (e.target.classList.contains('SdAddToCartBtn')) return;
       const productName = card.querySelector('.SdProductName')
         ? card.querySelector('.SdProductName').textContent
@@ -163,21 +200,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Закриття модального вікна
   modalClose.addEventListener('click', function () {
     modal.style.display = 'none';
   });
+
   window.addEventListener('click', function (e) {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 
-  // Обробка кліку по кнопці "Додати до кошика"
+  /* ======================================================================
+     5. Обробка кліків по кнопці "Додати до кошика"
+  ====================================================================== */
+  const cartIcon = document.querySelector('.cart-icon');
+  let cartCount = 0;
   const addToCartButtons = document.querySelectorAll('.SdAddToCartBtn');
   addToCartButtons.forEach(btn => {
     btn.addEventListener('click', function (e) {
-      e.stopPropagation();
+      e.stopPropagation(); // Запобігаємо відкриттю модального вікна при кліку на кнопку
       const card = btn.closest('.SdProductCard');
       card.classList.add('SdShake');
       setTimeout(() => {
@@ -202,4 +243,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
