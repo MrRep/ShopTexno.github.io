@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Підтримка - Чат</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+            rel="stylesheet">
+        <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-wrapper {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .chat-body {
+      height: 400px;
+      overflow-y: auto;
+      padding: 20px;
+      background: transparent;
+    }
+    .message {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message.staff {
+      justify-content: flex-start;
+    }
+    .bubble {
+      max-width: 70%;
+      padding: 15px 20px;
+      border-radius: 25px;
+      background: rgba(0, 0, 0, 0.5);
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease-out;
+      line-height: 1.4;
+    }
+    .message.user .bubble {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 25px;
+    }
+    .message.staff .bubble {
+      background: rgba(0, 0, 0, 0.6);
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 25px;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .chat-footer {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .chat-footer input[type="text"] {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      color: #fff;
+      font-size: 1em;
+    }
+    .chat-footer input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .chat-footer input[type="text"]:focus {
+      outline: none;
+    }
+    .chat-footer button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .chat-footer button:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+    }
+    /* Індикатор набору повідомлення */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      margin: 0 15px;
+    }
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      margin-right: 5px;
+      animation: blink 1s infinite;
+    }
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes blink {
+      0%, 80%, 100% {
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+    }
+  </style>
+    </head>
+    <body>
+        <div class="chat-wrapper">
+            <div class="chat-header">Підтримка</div>
+            <div class="chat-body" id="chatBody">
+                <!-- Повідомлення будуть додаватися сюди -->
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput"
+                    placeholder="Ваше повідомлення...">
+                <button id="sendButton">Відправити</button>
+            </div>
+        </div>
+
+        <script>
+    const sendButton = document.getElementById('sendButton');
+    const chatInput = document.getElementById('chatInput');
+    const chatBody = document.getElementById('chatBody');
+
+    sendButton.addEventListener('click', () => {
+      const messageText = chatInput.value.trim();
+      if (messageText) {
+        addMessage('user', messageText);
+        chatInput.value = '';
+
+        // Додаємо індикатор набору повідомлення
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('message', 'staff');
+        typingIndicator.id = 'typingIndicator';
+        typingIndicator.innerHTML = '<div class="bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+        chatBody.appendChild(typingIndicator);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        setTimeout(() => {
+          // Видаляємо індикатор
+          if(document.getElementById('typingIndicator')){
+            document.getElementById('typingIndicator').remove();
+          }
+          addMessage('staff', 'Дякуємо за ваше повідомлення. Ми зв\'яжемося з вами найближчим часом.');
+        }, 1500);
+      }
+    });
+
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendButton.click();
+      }
+    });
+
+    function addMessage(sender, text) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', sender);
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.textContent = text;
+      messageElement.appendChild(bubble);
+      chatBody.appendChild(messageElement);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  </script>
+    </body>
+</html>

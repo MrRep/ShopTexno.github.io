@@ -5,220 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TRog</title>
 
-    <<<<<<< HEAD
     <!-- Підключення шрифтів -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Candal&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="slider.css" />
+    <link rel="stylesheet" href="Slider.css">
+
   </head>
   <body>
+    <!-- Header -->
     <header>
       <div class="HeaderContainer">
         <!-- Фонова хвиля -->
         <div class="wave-container">
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 682 675"
-            fill="none"
+          <svg width="100%" height="100%" viewBox="0 0 682 675" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0H275L681.5 675H367L0 0Z" fill="#31498A" />
           </svg>
         </div>
-        =======
-        <!-- Підключення шрифтів -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Candal&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet" />
-        <link rel="stylesheet" href="Style.css" />
-      </head>
-      <body>
-        <header>
-          <div class="HeaderContainer">
-            <!-- Фонова хвиля -->
-            <div class="wave-container">
-              <svg width="100%" height="100%" viewBox="0 0 682 675"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0H275L681.5 675H367L0 0Z" fill="#31498A" />
-              </svg>
+
+        <!-- Старе меню -->
+        <nav class="navbar old-nav visible">
+          <div class="logo" translate="no">TRog</div>
+          <div class="menu">
+            <a href="/license.html">licensi</a>
+            <a href="#products">Product</a>
+            <a href="/Regster.html" class="profile-btn">Profile</a>
+          </div>
+        </nav>
+
+        <!-- Нове меню з пошуком та кошиком -->
+        <nav class="navbar new-nav hidden">
+          <div class="nav-content">
+            <div class="search-box">
+              <input type="text" placeholder="Пошук..." id="searchInput" />
+              <div class="search-suggestions">
+                <ul id="suggestionsList"></ul>
+              </div>
             </div>
-            >>>>>>> 588a30e5345f685195565014832fb8351c30a4d8
+            <div class="cart-icon"></div>
+          </div>
+        </nav>
 
-            <!-- Старе меню -->
-            <nav class="navbar old-nav visible">
-              <div class="logo" translate="no">TRog</div>
-              <div class="menu">
-                <a href="#">Privat</a>
-                <a href="#">Product</a>
-                <a href="#" class="profile-btn">Profile</a>
-              </div>
-            </nav>
+        <!-- Блок "Підтримка - чат" -->
+        <a href="/Felping.html">
+          <div class="chat-support">
+            <span class="chat-text">Підтримка -</span>
+            <div class="cart-chat hidden"></div>
+          </div>
+        </a>
 
-            <!-- Нове меню з пошуком та кошиком -->
-            <nav class="navbar new-nav hidden">
-              <div class="nav-content">
-                <!-- Блок пошуку з випадаючими підказками -->
-                <div class="search-box">
-                  <input
-                    type="text"
-                    placeholder="Пошук..."
-                    id="searchInput" />
-                  <div class="search-suggestions">
-                    <!-- Динамічний список категорій -->
-                    <ul id="suggestionsList"></ul>
-                  </div>
-                </div>
-                <div class="cart-icon"></div>
-              </div>
-            </nav>
+        <!-- Контент шапки -->
+        <div class="header-content">
+          <div class="left-content">
+            <h1>TRog</h1>
+            <p>Онлайн магазин самих нових комп'ютерних технологій</p>
+            <a href="#products" class="shop-btn">Перейти до покупок</a>
+          </div>
+          <div class="right-content">
+            <img src="/Fotos/HeaderGraphikCard.png" alt="GPU"
+              class="gpu-image" />
+          </div>
+        </div>
+      </div>
+    </header>
 
-            <!-- Блок "Підтримка - чат" -->
-            <div class="chat-support">
-              <span class="chat-text">Підтримка -</span>
-              <div class="cart-chat hidden"></div>
+    <main id="products">
+      <!-- Приклад слайдера (можеш повторювати) -->
+      <div class="FirstContainer" data-json="products.json">
+        <svg width="1155" height="540" viewBox="0 0 1155 540" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0 -3.05176e-05C0 -3.05176e-05 69.3581 343.744 519.5 381.5C969.642 419.256 1154.86 460.164 1154.86 460.164C1154.86 460.164 1155.17 514.83 1154.86 539.5C1154.86 539.5 880.5 460.164 519.5 443C158.5 425.836 0 194.5 0 194.5V-3.05176e-05Z"
+            fill="#31498A" />
+        </svg>
+
+        <div class="SdShadow">
+          <div class="SdSliderSection">
+            <div class="SdSliderWrapper">
+              <div class="SdSlider"></div>
+              <button class="SdSliderArrow left">&larr;</button>
+              <button class="SdSliderArrow right">&rarr;</button>
             </div>
+            <div class="SdPagination"></div>
+          </div>
+        </div>
+      </div>
 
-            <!-- Контент шапки -->
-            <div class="header-content">
-              <div class="left-content">
-                <h1>TRog</h1>
-                <p>Онлайн магазин самих нових комп'ютерних технологій</p>
-                <a href="#products" class="shop-btn">Перейти до покупок</a>
-              </div>
-              <div class="right-content">
-                <img
-                  src="/Fotos/67bb9384b70ee6000971a43a 1.png"
-                  alt="GPU"
-                  class="gpu-image" />
-              </div>
+      <!-- Приклад слайдера (можеш повторювати) -->
+      <div class="FirstContainer" data-json="other-products.json">
+        <svg class="BackgroundSVG" width="100%" height="100%"
+          viewBox="0 0 1155 540">
+          <path d="..." fill="#31498A" />
+        </svg>
+
+        <div class="SdShadow">
+          <div class="SdSliderSection">
+            <div class="SdSliderWrapper">
+              <div class="SdSlider"></div>
+              <button class="SdSliderArrow left">&larr;</button>
+              <button class="SdSliderArrow right">&rarr;</button>
+            </div>
+            <div class="SdPagination"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li><a href="#">about us</a></li>
+              <li><a href="#">our services</a></li>
+              <li><a href="#">privacy policy</a></li>
+              <li><a href="#">affiliate program</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">shipping</a></li>
+              <li><a href="#">returns</a></li>
+              <li><a href="#">order status</a></li>
+              <li><a href="/Regster.html">payment options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>online shop</h4>
+            <ul>
+              <li><a href="#">Mainboard</a></li>
+              <li><a href="#">SSD</a></li>
+              <li><a href="#">Graphik Kard</a></li>
+              <li><a href="#">Cpu</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
-        </header>
+        </div>
+      </div>
+    </footer>
 
-        <main>
-          <div id="products" class="FirstContainer">
-            <!-- Фоновий SVG (залишається позаду всіх елементів) -->
-            <svg class="BackgroundSVG"
-              width="100%"
-              height="100%"
-              viewBox="0 0 1155 540"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0 0C0 0 69.3581 343.744 519.5 381.5C969.642 419.256 1154.86 460.164 1154.86 460.164C1154.86 460.164 1155.17 514.83 1154.86 539.5C1154.86 539.5 880.5 460.164 519.5 443C158.5 425.836 0 194.5 0 194.5V0Z"
-                fill="#31498A" />
-            </svg>
+    <div class="SdModal" id="productModal">
+      <div class="SdModalContent">
+        <span class="SdModalClose">&times;</span>
+        <img class="SdModalImage" src alt>
+        <div class="SdModalProductDetails">
+          <h3 class="SdModalProductName"></h3>
+          <p class="SdModalPrice"></p>
+          <p class="SdModalDescription"></p>
+          <a href="index.html" class="SdModalHomeLink">Переглянути на головній
+            сторінці</a>
+        </div>
+      </div>
+    </div>
 
-            <div class="SdShadow">
-              <!-- Slider Section -->
-              <div class="SdSliderSection">
-                <div class="SdSliderWrapper">
-                  <!-- Слайдер з картками товару -->
-                  <div class="SdSlider">
-                    <div class="SdProductCard">
-                      <div class="SdProductImageWrapper">
-                        <img src="/Fotos/Назва"
-                          alt="Назва"
-                          class="SdProductImage" />
-                      </div>
-                      <div class="SdProductDetails">
-                        <h3 class="SdProductName">Назва</h3>
-                      </div>
-                    </div>
-                    <!-- Додаткові картки можна додати сюди -->
-                  </div>
-                  <!-- Стрілки навігації - розміщені поза .SdSlider -->
-                  <button class="SdSliderArrow left">&larr;</button>
-                  <button class="SdSliderArrow right">&rarr;</button>
-                </div>
-                <!-- Навігаційні точки -->
-                <div class="SdPagination">
-                  <span class="SdDot active" data-index="0"></span>
-                  <span class="SdDot" data-index="1"></span>
-                  <span class="SdDot" data-index="2"></span>
-                  <span class="SdDot" data-index="3"></span>
-                  <span class="SdDot" data-index="4"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Модальне вікно для Quick View (розташоване окремо) -->
-          <div class="SdModal" id="SdModal">
-            <div class="SdModalContent">
-              <span class="SdModalClose">&times;</span>
-              <div class="SdModalBody">
-                <h3 class="SdModalProductName">Назва товару</h3>
-                <p class="SdModalProductInfo">Коротка інформація про товар.</p>
-              </div>
-            </div>
-          </div>
-
-          <div id="products2" class="FirstContainer">
-            <!-- Фоновий SVG (залишається позаду всіх елементів) -->
-            <svg class="BackgroundSVG"
-              width="100%"
-              height="100%"
-              viewBox="0 0 1155 540"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M0 0C0 0 69.3581 343.744 519.5 381.5C969.642 419.256 1154.86 460.164 1154.86 460.164C1154.86 460.164 1155.17 514.83 1154.86 539.5C1154.86 539.5 880.5 460.164 519.5 443C158.5 425.836 0 194.5 0 194.5V0Z"
-                fill="#31498A" />
-            </svg>
-
-            <div class="SdShadow">
-              <!-- Slider Section -->
-              <div class="SdSliderSection">
-                <div class="SdSliderWrapper">
-                  <!-- Слайдер з картками товару -->
-                  <div class="SdSlider">
-                    <div class="SdProductCard">
-                      <div class="SdProductImageWrapper">
-                        <img src="/Fotos/Назва"
-                          alt="Назва"
-                          class="SdProductImage" />
-                      </div>
-                      <div class="SdProductDetails">
-                        <h3 class="SdProductName">Назва</h3>
-                      </div>
-                    </div>
-                    <!-- Додаткові картки можна додати сюди -->
-                  </div>
-                  <!-- Стрілки навігації - розміщені поза .SdSlider -->
-                  <button class="SdSliderArrow left">&larr;</button>
-                  <button class="SdSliderArrow right">&rarr;</button>
-                </div>
-                <!-- Навігаційні точки -->
-                <div class="SdPagination">
-                  <span class="SdDot active" data-index="0"></span>
-                  <span class="SdDot" data-index="1"></span>
-                  <span class="SdDot" data-index="2"></span>
-                  <span class="SdDot" data-index="3"></span>
-                  <span class="SdDot" data-index="4"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Модальне вікно для Quick View (розташоване окремо) -->
-          <div class="SdModal" id="SdModal2">
-            <div class="SdModalContent">
-              <span class="SdModalClose">&times;</span>
-              <div class="SdModalBody">
-                <h3 class="SdModalProductName">Назва товару</h3>
-                <p class="SdModalProductInfo">Коротка інформація про товар.</p>
-              </div>
-            </div>
-          </div>
-        </main>
-
-        <script src="index.js"></script>
-      </body>
-    </html>
+    <script src="Script.js"></script>
+    <script src="Slider.js"></script>
+  </body>
+</html>

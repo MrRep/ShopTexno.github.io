@@ -8,7 +8,7 @@
   background-color: #0f131a;
 }
 
-/* Фоновий SVG повинен бути абсолютно позиціонований, щоб залишатися позаду */
+/* Фоновий SVG займає всю площу контейнера і знаходиться позаду всіх елементів */
 .FirstContainer svg {
   position: absolute;
   top: 0;
@@ -54,7 +54,9 @@
    4. Контейнер слайдера (.SdSliderWrapper)
 ====================================================================== */
 .SdSliderWrapper {
-  position: relative;
+   position: relative;
+  
+  width: 100%;
 }
 
 /* ======================================================================
@@ -86,15 +88,18 @@
   /* Використовуємо flex для розташування елементів у колонку */
   display: flex;
   flex-direction: column;
+   flex-shrink: 0; /* забороняємо стискання карток */
+  width: 300px; /* або адаптивна ширина */
+  height: auto; /* гнучка висота */
+  margin-left: 20px; /* рівномірний проміжок */
 }
 
-/* Ефект наведення на картку товару */
 .SdProductCard:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Блок для зображення (займе весь вільний простір) */
+/* Блок для зображення товару */
 .SdProductImageWrapper {
   flex: 1;
   overflow: hidden;
@@ -109,7 +114,7 @@
   transition: transform 0.3s ease;
 }
 
-/* Нижній блок з деталями (назва та, за бажанням, додаткова інформація) */
+/* Нижній блок з деталями товару (назва та додаткова інформація) */
 .SdProductDetails {
   background-color: #2F3A63;
   padding: 5px;
@@ -123,7 +128,7 @@
   color: #fff;
 }
 
-/* Додаткова інформація про товар (якщо потрібна) */
+/* Додаткова інформація про товар (за потреби) */
 .SpProductInfo {
   background-color: #2F3A63;
   padding: 10px;
@@ -135,7 +140,7 @@
 ====================================================================== */
 .SdPagination {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .SdDot {
@@ -156,67 +161,206 @@
 /* ======================================================================
    8. Модальне вікно для швидкого перегляду (.SdModal)
 ====================================================================== */
+/* Стилі для модального вікна (адаптовані під дизайн користувача) */
 .SdModal {
   display: none;
   position: fixed;
-  z-index: 11000;  /* Поверх всіх інших елементів */
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
 }
 
 .SdModalContent {
-  background: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
   position: relative;
-  border-radius: 8px;
+  background: #0C152E;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  max-width: 800px;
+  width: 90%;
+  text-align: left;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  animation: modalAppear 0.5s ease;
 }
 
 .SdModalClose {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
+.SdModalClose:hover {
+  color: #ff5c5c;
+}
+
+.SdModalImage {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 15px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+}
+
+.SdModalProductDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  max-width: calc(100% - 330px);
+}
+
+.SdModalProductName {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.SdModalPrice {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.SdModalDescription {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.SdModalHomeLink {
+  display: inline-block;
+  background-color: #3B4C7F;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+  width: fit-content;
+}
+
+.SdModalHomeLink:hover {
+  background-color: #556AB7;
+  transform: translateY(-3px);
+}
+
+/* Анімації */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalAppear {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+  .SdModalContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .SdModalProductDetails {
+    max-width: 100%;
+  }
+
+  .SdModalImage {
+    max-width: 100%;
+  }
+}
+/* ======================================================================
+   9. Стрілки навігації слайдера (.SdSliderArrow)
+====================================================================== */
 .SdSliderArrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(49, 73, 138, 0.8); /* гарний темно-синій колір з прозорістю */
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 24px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 3;
-  transition: background 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .SdSliderArrow:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(49, 73, 138, 1); /* яскравіше при наведенні */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* Запобігаємо зсуву стрілок при кліку (активному/фокусі) */
 .SdSliderArrow:active,
 .SdSliderArrow:focus {
-  transform: translateY(-50%);
   outline: none;
 }
 
 .SdSliderArrow.left {
-  left: 10px;
+  left: 15px;
 }
 
 .SdSliderArrow.right {
-  right: 10px;
+  right: 15px;
 }
+
+.SdSliderArrow {
+    border-radius: 15px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Для великих екранів (1920px і більше) */
+@media (min-width: 1920px) {
+  .SdProductCard {
+    width: calc((100% - 200px) / 5); /* 5 карток + проміжки */
+  }
+}
+
+/* Для екранів 1280–1600px */
+@media (min-width: 1280px) and (max-width: 1600px) {
+  .SdProductCard {
+    width: calc((100% - 160px) / 4); /* 4 картки + проміжки */
+  }
+}
+
+/* Для екранів 1024–1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .SdProductCard {
+    width: calc((100% - 120px) / 3); /* 3 картки + проміжки */
+  }
+}
+
+/* Для екранів 800–1023px */
+@media (min-width: 800px) and (max-width: 1023px) {
+  .SdProductCard {
+    width: calc((100% - 80px) / 2); /* 2 картки + проміжки */
+  }
+}
+
+/* Перша картка без лівого маржину */
+.SdProductCard:first-child {
+  margin-left: 0;
+}
+

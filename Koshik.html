@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <title>Кошик</title>
+        <link rel="stylesheet" href="Koshik.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <header>
+                <h1>Кошик</h1>
+            </div>
+
+            <div class="cart-container">
+                <div class="cart-items">
+                    <!-- Приклад товару -->
+                    <div class="item-card">
+                        <span class="item-name">Футболка</span>
+                        <span class="item-price">450 грн</span>
+                        <div class="item-quantity">
+                            <button class="quantity-minus">–</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-plus">+</button>
+                        </div>
+                        <button class="remove-item">Видалити</button>
+                    </div>
+                    <!-- Сюди додаються нові картки товарів -->
+                </div>
+
+                <div class="cart-summary">
+                    <span>Загалом: <span id="total-price">450</span> грн</span>
+                    <button id="clear-cart">Очистити кошик</button>
+                </div>
+            </div>
+
+            <script src="Koshik.js"></script>
+        </body>
+    </html>

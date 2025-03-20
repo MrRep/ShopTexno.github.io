@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин - Оформлення замовлення</title>
+    <!-- Підключення Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet">
+    <style>
+    /* Базові стилі */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto 20px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    /* Фіксований блок для мовного та темного перемикачів */
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      z-index: 1000;
+    }
+    /* Стилі для перемикача темного режиму */
+    #themeToggle {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #themeToggle:hover {
+      background: #0056b3;
+    }
+    /* Стилі для перемикача вкладок */
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      background: #e2e2e2;
+      border-radius: 50px;
+      width: fit-content;
+      margin: 0 auto 20px;
+      transition: background 0.3s;
+    }
+    .toggle-button {
+      padding: 10px 25px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      border-radius: 50px;
+      transition: background 0.3s;
+    }
+    .toggle-button.active {
+      background: #fff;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    /* Анімації для секцій */
+    .section {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+    .section.active {
+      opacity: 1;
+      max-height: 1000px; /* достатньо для контенту */
+    }
+    /* Стилі для полів форми */
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s, background 0.3s, color 0.3s;
+    }
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    .phone-group {
+      display: flex;
+      gap: 5px;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button[type="submit"] {
+      background: #007bff;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: #0056b3;
+    }
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 60px 10px 20px;
+      }
+      .phone-group {
+        flex-direction: column;
+      }
+    }
+    /* Стилі для повідомлень про помилки */
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .error-message.visible {
+      opacity: 1;
+    }
+    /* Стилі для темного режиму */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode .container {
+      background: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+    body.dark-mode input,
+    body.dark-mode select {
+      background: #2c2c2c;
+      color: #e0e0e0;
+      border-color: #444;
+    }
+    body.dark-mode h1 {
+      color: #e0e0e0;
+    }
+    body.dark-mode .toggle-container {
+      background: #333;
+    }
+    body.dark-mode button[type="submit"] {
+      background: #0056b3;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="top-controls">
+      <select id="languageSelect">
+        <option value="uk">Українська</option>
+        <option value="en">English</option>
+      </select>
+      <button id="themeToggle">Світлий режим</button>
+    </div>
+
+    <div class="container">
+      <h1 id="formHeading" data-i18n="heading">Ваша інформація</h1>
+
+      <!-- Перемикач між вкладками -->
+      <div class="toggle-container">
+        <button id="deliveryTab" class="toggle-button active"
+          data-i18n="deliveryTab">Доставка</button>
+        <button id="paymentTab" class="toggle-button"
+          data-i18n="paymentTab">Оплата</button>
+      </div>
+
+      <form id="orderForm">
+        <!-- Секція Доставка -->
+        <div id="deliverySection" class="section active">
+          <label for="name" data-i18n="fields.firstName">Ім'я</label>
+          <input type="text" id="name" name="name" placeholder="Ваше ім'я"
+            required title="Введіть ваше ім'я">
+          <span class="error-message" id="error-name"></span>
+
+          <label for="lastName" data-i18n="fields.lastName">Прізвище</label>
+          <input type="text" id="lastName" name="lastName"
+            placeholder="Ваше прізвище" required title="Введіть ваше прізвище">
+          <span class="error-message" id="error-lastName"></span>
+
+          <label for="birthYear" data-i18n="fields.birthYear">Рік
+            народження</label>
+          <input type="number" id="birthYear" name="birthYear"
+            placeholder="Наприклад, 2005" min="1900" max="2100" required
+            title="Введіть ваш рік народження">
+          <span class="error-message" id="error-birthYear"></span>
+
+          <label for="country" data-i18n="fields.country">Країна</label>
+          <input type="text" id="country" name="country"
+            placeholder="Введіть вашу країну" required
+            title="Введіть вашу країну">
+          <span class="error-message" id="error-country"></span>
+
+          <label for="email" data-i18n="fields.email">Email</label>
+          <input type="email" id="email" name="email"
+            placeholder="example@mail.com" required
+            title="Введіть вашу електронну пошту">
+          <span class="error-message" id="error-email"></span>
+
+          <label for="orderNotes" data-i18n="fields.orderNotes">Примітки до
+            замовлення</label>
+          <input type="text" id="orderNotes" name="orderNotes"
+            placeholder="Ваші примітки (необов'язково)"
+            title="Якщо є, введіть примітки">
+          <span class="error-message" id="error-orderNotes"></span>
+
+          <label for="phonePrefix" data-i18n="fields.phone">Телефон</label>
+          <div class="phone-group">
+            <select id="phonePrefix" name="phonePrefix" required
+              title="Оберіть код країни">
+              <option value="+380">+380 (UA)</option>
+              <option value="+48">+48 (PL)</option>
+              <option value="+1">+1 (US)</option>
+              <option value="+44">+44 (UK)</option>
+              <option value="+49">+49 (DE)</option>
+            </select>
+            <input type="tel" id="phone" name="phone" placeholder="Ваш номер"
+              required title="Введіть номер телефону">
+          </div>
+          <span class="error-message" id="error-phone"></span>
+        </div>
+
+        <!-- Секція Оплата -->
+        <div id="paymentSection" class="section">
+          <label for="paymentMethod" data-i18n="fields.paymentMethod">Спосіб
+            оплати</label>
+          <select id="paymentMethod" name="paymentMethod" required
+            title="Оберіть спосіб оплати">
+            <option value="MasterCard">MasterCard</option>
+            <option value="Visa">Visa</option>
+            <option value="PayPal">PayPal</option>
+            <option value="American Express">American Express</option>
+          </select>
+          <span class="error-message" id="error-paymentMethod"></span>
+
+          <!-- Поля для оплати карткою -->
+          <div id="cardPaymentFields">
+            <label for="cardHolderName" data-i18n="fields.cardHolderName">Ім'я
+              та прізвище власника картки</label>
+            <input type="text" id="cardHolderName" name="cardHolderName"
+              placeholder="Як вказано на картці" required
+              title="Введіть ім'я власника картки">
+            <span class="error-message" id="error-cardHolderName"></span>
+
+            <label for="cardNumber" data-i18n="fields.cardNumber">Номер
+              картки</label>
+            <input type="text" id="cardNumber" name="cardNumber"
+              placeholder="Номер картки (16 цифр)" required
+              title="Введіть 16-значний номер картки">
+            <span class="error-message" id="error-cardNumber"></span>
+
+            <label for="expiry" data-i18n="fields.expiry">Термін дії</label>
+            <input type="date" id="expiry" name="expiry" required
+              title="Оберіть термін дії картки">
+            <span class="error-message" id="error-expiry"></span>
+
+            <label for="cvv" data-i18n="fields.cvv">CVV</label>
+            <input type="number" id="cvv" name="cvv" placeholder="3 цифри"
+              required title="Введіть 3-значний CVV">
+            <span class="error-message" id="error-cvv"></span>
+          </div>
+
+          <!-- Поля для оплати через PayPal -->
+          <div id="paypalPaymentFields" style="display:none;">
+            <label for="paypalEmail" data-i18n="fields.paypalEmail">PayPal
+              Email</label>
+            <input type="email" id="paypalEmail" name="paypalEmail"
+              placeholder="example@paypal.com" title="Введіть email для PayPal">
+            <span class="error-message" id="error-paypalEmail"></span>
+          </div>
+
+          <label for="promoCode" data-i18n="fields.promoCode">Промокод</label>
+          <input type="text" id="promoCode" name="promoCode"
+            placeholder="Якщо є промокод" title="Введіть промокод, якщо є">
+          <span class="error-message" id="error-promoCode"></span>
+        </div>
+
+        <div class="button-container">
+          <button type="submit" id="saveButton" data-i18n="saveButton">Зберегти
+            дані</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+    // Об'єкт перекладів для мульти-мовності
+    const translations = {
+      uk: {
+        heading: "Оформлення замовлення",
+        deliveryTab: "Доставка",
+        paymentTab: "Оплата",
+        fields: {
+          firstName: "Ім'я",
+          lastName: "Прізвище",
+          birthYear: "Рік народження",
+          country: "Країна",
+          phone: "Телефон",
+          email: "Email",
+          orderNotes: "Примітки до замовлення",
+          paymentMethod: "Спосіб оплати",
+          cardHolderName: "Ім'я та прізвище власника картки",
+          cardNumber: "Номер картки",
+          expiry: "Термін дії",
+          cvv: "CVV",
+          promoCode: "Промокод",
+          paypalEmail: "PayPal Email"
+        },
+        saveButton: "Зберегти дані"
+      },
+      en: {
+        heading: "Checkout",
+        deliveryTab: "Delivery",
+        paymentTab: "Payment",
+        fields: {
+          firstName: "First Name",
+          lastName: "Last Name",
+          birthYear: "Birth Year",
+          country: "Country",
+          phone: "Phone",
+          email: "Email",
+          orderNotes: "Order Notes",
+          paymentMethod: "Payment Method",
+          cardHolderName: "Cardholder Name",
+          cardNumber: "Card Number",
+          expiry: "Expiry Date",
+          cvv: "CVV",
+          promoCode: "Promo Code",
+          paypalEmail: "PayPal Email"
+        },
+        saveButton: "Save Data"
+      }
+    };
+
+    // Функція оновлення мови
+    function updateLanguage(lang) {
+      document.getElementById('formHeading').textContent = translations[lang].heading;
+      document.getElementById('deliveryTab').textContent = translations[lang].deliveryTab;
+      document.getElementById('paymentTab').textContent = translations[lang].paymentTab;
+      document.getElementById('saveButton').textContent = translations[lang].saveButton;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const keys = key.split('.');
+        let text = translations[lang];
+        keys.forEach(k => { text = text[k]; });
+        if(text) { el.textContent = text; }
+      });
+    }
+    // Мовний перемикач
+    const languageSelect = document.getElementById('languageSelect');
+    languageSelect.addEventListener('change', function() {
+      updateLanguage(this.value);
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      updateLanguage(languageSelect.value);
+    });
+
+    // Перемикач темного/світлого режиму
+    const themeToggle = document.getElementById('themeToggle');
+    // За замовчуванням активуємо темний режим
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = "Світлий режим";
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        themeToggle.textContent = "Світлий режим";
+      } else {
+        themeToggle.textContent = "Темний режим";
+      }
+    });
+
+    // Логіка для відображення полів оплати
+    const paymentMethodSelect = document.getElementById('paymentMethod');
+    const cardPaymentFields = document.getElementById('cardPaymentFields');
+    const paypalPaymentFields = document.getElementById('paypalPaymentFields');
+    paymentMethodSelect.addEventListener('change', function() {
+      if(this.value === "PayPal") {
+        cardPaymentFields.style.display = "none";
+        document.getElementById('cardHolderName').required = false;
+        document.getElementById('cardNumber').required = false;
+        document.getElementById('expiry').required = false;
+        document.getElementById('cvv').required = false;
+        paypalPaymentFields.style.display = "block";
+        document.getElementById('paypalEmail').required = true;
+      } else {
+        cardPaymentFields.style.display = "block";
+        document.getElementById('cardHolderName').required = true;
+        document.getElementById('cardNumber').required = true;
+        document.getElementById('expiry').required = true;
+        document.getElementById('cvv').required = true;
+        paypalPaymentFields.style.display = "none";
+        document.getElementById('paypalEmail').required = false;
+      }
+    });
+
+    // Перемикання між секціями доставки та оплати з анімацією
+    const deliveryTab = document.getElementById('deliveryTab');
+    const paymentTab = document.getElementById('paymentTab');
+    const deliverySection = document.getElementById('deliverySection');
+    const paymentSection = document.getElementById('paymentSection');
+    deliveryTab.addEventListener('click', () => {
+      deliveryTab.classList.add('active');
+      paymentTab.classList.remove('active');
+      deliverySection.classList.add('active');
+      paymentSection.classList.remove('active');
+    });
+    paymentTab.addEventListener('click', () => {
+      paymentTab.classList.add('active');
+      deliveryTab.classList.remove('active');
+      paymentSection.classList.add('active');
+      deliverySection.classList.remove('active');
+    });
+
+    // Функції валідації
+    function validateAge(birthYear) {
+      const currentYear = new Date().getFullYear();
+      return (currentYear - birthYear) >= 16;
+    }
+    function validateCardNumber(number) {
+      const digits = number.replace(/\D/g, '');
+      if (digits.length !== 16) return false;
+      let sum = 0;
+      let shouldDouble = false;
+      for (let i = digits.length - 1; i >= 0; i--) {
+        let digit = parseInt(digits[i], 10);
+        if (shouldDouble) {
+          digit *= 2;
+          if (digit > 9) digit -= 9;
+        }
+        sum += digit;
+        shouldDouble = !shouldDouble;
+      }
+      return (sum % 10) === 0;
+    }
+    function validateCVV(cvv) {
+      const cvvStr = cvv.toString();
+      return /^\d{3}$/.test(cvvStr);
+    }
+    // Очищення повідомлень про помилки
+    function clearErrors() {
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.classList.remove('visible');
+      });
+    }
+    // Обробка форми та валідація
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearErrors();
+      let isValid = true;
+      // Валідація розділу "Доставка"
+      const name = document.getElementById('name').value.trim();
+      if(name === '') {
+        isValid = false;
+        const err = document.getElementById('error-name');
+        err.textContent = "Це поле є обов'язковим.";
+        err.classList.add('visible');
+      }
+      const lastName = document.getElementById('lastName').value.trim();
+      if(lastName === '') {
+        isValid = false;
+        const err = document.getElementById('error-lastName');
+        err.textContent = "Це поле є обов'язковим.";
+        err.classList.add('visible');
+      }
+      const birthYear = parseInt(document.getElementById('birthYear').value, 10);
+      if(isNaN(birthYear) || !validateAge(birthYear)) {
+        isValid = false;
+        const err = document.getElementById('error-birthYear');
+        err.textContent = "Вибачте, вам має бути не менше 16 років.";
+        err.classList.add('visible');
+      }
+      const country = document.getElementById('country').value.trim();
+      if(country === '') {
+        isValid = false;
+        const err = document.getElementById('error-country');
+        err.textContent = "Це поле є обов'язковим.";
+        err.classList.add('visible');
+      }
+      const email = document.getElementById('email').value.trim();
+      if(email === '') {
+        isValid = false;
+        const err = document.getElementById('error-email');
+        err.textContent = "Введіть ваш email.";
+        err.classList.add('visible');
+      }
+      const phone = document.getElementById('phone').value.trim();
+      if(phone === '') {
+        isValid = false;
+        const err = document.getElementById('error-phone');
+        err.textContent = "Введіть номер телефону.";
+        err.classList.add('visible');
+      }
+      // Валідація розділу "Оплата"
+      const paymentMethod = document.getElementById('paymentMethod').value;
+      if(paymentMethod === '') {
+        isValid = false;
+        const err = document.getElementById('error-paymentMethod');
+        err.textContent = "Оберіть спосіб оплати.";
+        err.classList.add('visible');
+      }
+      if(paymentMethod === "PayPal") {
+        const paypalEmail = document.getElementById('paypalEmail').value.trim();
+        if(paypalEmail === '') {
+          isValid = false;
+          const err = document.getElementById('error-paypalEmail');
+          err.textContent = "Введіть PayPal email.";
+          err.classList.add('visible');
+        }
+      } else {
+        const cardHolderName = document.getElementById('cardHolderName').value.trim();
+        if(cardHolderName === '') {
+          isValid = false;
+          const err = document.getElementById('error-cardHolderName');
+          err.textContent = "Введіть ім'я власника картки.";
+          err.classList.add('visible');
+        }
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        if(!validateCardNumber(cardNumber)) {
+          isValid = false;
+          const err = document.getElementById('error-cardNumber');
+          err.textContent = "Невірний номер картки.";
+          err.classList.add('visible');
+        }
+        const expiry = document.getElementById('expiry').value;
+        if(expiry === '' || new Date(expiry) < new Date()) {
+          isValid = false;
+          const err = document.getElementById('error-expiry');
+          err.textContent = "Введіть коректну дату терміну дії.";
+          err.classList.add('visible');
+        }
+        const cvv = document.getElementById('cvv').value;
+        if(!validateCVV(cvv)) {
+          isValid = false;
+          const err = document.getElementById('error-cvv');
+          err.textContent = "CVV повинен складатися з 3 цифр.";
+          err.classList.add('visible');
+        }
+      }
+      // Якщо всі перевірки пройдено, зберігаємо дані
+      if(isValid) {
+        const formData = {
+          name: name,
+          lastName: lastName,
+          birthYear: birthYear,
+          country: country,
+          email: email,
+          orderNotes: document.getElementById('orderNotes').value.trim(),
+          phonePrefix: document.getElementById('phonePrefix').value,
+          phone: phone,
+          paymentMethod: paymentMethod,
+          cardHolderName: document.getElementById('cardHolderName').value.trim(),
+          cardNumber: document.getElementById('cardNumber').value.trim(),
+          expiry: document.getElementById('expiry').value,
+          cvv: document.getElementById('cvv').value,
+          paypalEmail: document.getElementById('paypalEmail').value.trim(),
+          promoCode: document.getElementById('promoCode').value.trim()
+        };
+        localStorage.setItem('orderFormData', JSON.stringify(formData));
+        alert('Дані збережено у кеші браузера!');
+      }
+    });
+  </script>
+  </body>
+</html>
