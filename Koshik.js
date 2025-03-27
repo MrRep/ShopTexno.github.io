@@ -1,64 +1,71 @@
-const cartItemsContainer = document.querySelector('.cart-items');
-const totalPriceElement = document.getElementById('total-price');
-const clearCartBtn = document.getElementById('clear-cart');
+document.addEventListener('DOMContentLoaded', () => {
+  const cartContainer = document.getElementById('cart-container');
+  const totalSumElement = document.getElementById('total-sum');
+  const clearCartBtn = document.getElementById('clear-cart');
+  const checkoutBtn = document.getElementById('checkout');
 
-// Початковий масив товарів
-let cart = [
-  { name: 'Футболка', price: 450, quantity: 1 },
-];
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartContainer.innerHTML = '';
 
-// Оновлюємо відображення кошика
-function renderCart() {
-  cartItemsContainer.innerHTML = '';
-  let total = 0;
+    if (cart.length === 0) {
+      cartContainer.innerHTML = "<p>Ваш кошик порожній!</p>";
+      totalSumElement.textContent = '0£';
+      return;
+    }
 
-  cart.forEach((item, idx) => {
-    total += item.price * item.quantity;
+    let totalSum = 0;
 
-    const itemEl = document.createElement('div');
-    itemEl.classList.add('item-card');
-    itemEl.innerHTML = `
-      <span class="item-name">${item.name}</span>
-      <span class="item-price">${item.price} грн</span>
-      <div class="item-quantity">
-        <button class="quantity-minus" onclick="updateQuantity(${idx}, -1)">–</button>
-        <span class="quantity">${item.quantity}</span>
-        <button class="quantity-plus" onclick="updateQuantity(${idx}, 1)">+</button>
-      </div>
-      <button class="remove-item" onclick="removeItem(${idx})">Видалити</button>
-    `;
-    cartItemsContainer.appendChild(itemEl);
-  });
+    cart.forEach((item, index) => {
+      totalSum += item.totalPrice;
+      cartContainer.innerHTML += `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>Ціна за одиницю: ${item.price}£</p>
+            <div class="cart-item-quantity">
+              <button onclick="changeQuantity(${index}, -1)">-</button>
+              <input type="number" value="${item.quantity}" min="1" readonly>
+              <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+            <p><strong>Сума: ${item.totalPrice.toFixed(2)}£</strong></p>
+          </div>
+          <button class="remove-item" onclick="removeItem(${index})">&times;</button>
+        </div>
+      `;
+    });
 
-  totalPriceElement.textContent = total;
-}
+    totalSumElement.textContent = `${totalSum.toFixed(2)}£`;
+  }
 
-// Змінюємо кількість
-window.updateQuantity = function(idx, change) {
-  cart[idx].quantity += change;
-  if (cart[idx].quantity < 1) cart[idx].quantity = 1;
+  window.changeQuantity = function(index, delta) {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    cart[index].quantity += delta;
+    if (cart[index].quantity < 1) cart[index].quantity = 1;
+
+    cart[index].totalPrice = cart[index].price * cart[index].quantity;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  window.removeItem = function(index) {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  clearCartBtn.onclick = () => {
+    if (confirm('Ви дійсно хочете очистити кошик?')) {
+      localStorage.removeItem('cart');
+      renderCart();
+    }
+  }
+
+  checkoutBtn.onclick = () => {
+    alert('Функція оформлення замовлення в розробці!');
+  }
+
   renderCart();
-}
-
-// Видалення товару
-window.removeItem = function(idx) {
-  cart.splice(idx, 1);
-  renderCart();
-}
-
-// Очищення кошика
-clearCartBtn.onclick = () => {
-  cart = [];
-  renderCart();
-};
-
-// Додавання нового товару (приклад)
-function addItem(name, price) {
-  const existing = cart.find(el => el.name === name);
-  if (existing) existing.quantity++;
-  else cart.push({ name, price, quantity: 1 });
-  renderCart();
-}
-
-// Початковий виклик для відображення
-renderCart();
+});
