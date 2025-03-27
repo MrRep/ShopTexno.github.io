@@ -48,7 +48,9 @@
                 <ul id="suggestionsList"></ul>
               </div>
             </div>
-            <div class="cart-icon"></div>
+            <a href="/Koshik.html">
+              <div class="cart-icon"></div>
+            </a>
           </div>
         </nav>
 
@@ -123,7 +125,7 @@
           <div class="footer-col">
             <h4>company</h4>
             <ul>
-              <li><a href="#">about us</a></li>
+              <li><a href="/AbautUs.html">about us</a></li>
               <li><a href="#">our services</a></li>
               <li><a href="#">privacy policy</a></li>
               <li><a href="#">affiliate program</a></li>
@@ -132,10 +134,10 @@
           <div class="footer-col">
             <h4>get help</h4>
             <ul>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/FAQ.html">FAQ</a></li>
               <li><a href="#">shipping</a></li>
-              <li><a href="#">returns</a></li>
-              <li><a href="#">order status</a></li>
+              <li><a href="/Returns.html">returns</a></li>
+              <li><a href="/OrderStatus.html">order status</a></li>
               <li><a href="/Regster.html">payment options</a></li>
             </ul>
           </div>
@@ -164,13 +166,23 @@
     <div class="SdModal" id="productModal">
       <div class="SdModalContent">
         <span class="SdModalClose">&times;</span>
-        <img class="SdModalImage" src alt>
-        <div class="SdModalProductDetails">
-          <h3 class="SdModalProductName"></h3>
-          <p class="SdModalPrice"></p>
-          <p class="SdModalDescription"></p>
-          <a href="index.html" class="SdModalHomeLink">Переглянути на головній
-            сторінці</a>
+        <div class="modal-left">
+          <img class="SdModalImage" src alt="Товар">
+        </div>
+        <div class="modal-right">
+          <h2 class="SdModalProductName">Назва товару</h2>
+          <span class="SdModalAvailability in-stock">В наявності</span>
+          <p class="SdModalDescription">Опис товару...</p>
+          <div class="SdModalPriceBlock">
+            <span class="SdModalPriceTag">Ціна: <span
+                id="productPrice">0</span>£</span>
+            <div class="quantity-selector">
+              <button id="decrease">-</button>
+              <input type="number" id="quantity" value="1" min="1">
+              <button id="increase">+</button>
+            </div>
+          </div>
+          <button class="AddToCartBtn">Додати до кошика 🛒</button>
         </div>
       </div>
     </div>

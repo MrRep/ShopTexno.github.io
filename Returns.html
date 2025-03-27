@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Повернення товару</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet">
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #11131a;
+            color: #ffffff;
+            padding: 40px;
+        }
+
+        .returns-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .policy, .return-form {
+            background-color: #181b24;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .return-form input,
+        .return-form select,
+        .return-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            background-color: #252a3a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #829efc;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6a84f7;
+        }
+    </style>
+    </head>
+    <body>
+
+        <div class="returns-container">
+            <h2>Повернення товару</h2>
+
+            <div class="policy">
+                <h3>Політика повернення</h3>
+                <ul>
+                    <li>Термін повернення – 14 днів з моменту отримання
+                        товару.</li>
+                    <li>Товар повинен мати товарний вигляд і повну
+                        комплектацію.</li>
+                    <li>Повернення приймається тільки за наявності чеку або
+                        гарантійного талона.</li>
+                    <li>Покупець оплачує доставку, крім випадків помилки
+                        магазину або дефекту.</li>
+                </ul>
+            </div>
+
+            <div class="return-form">
+                <h3>Форма повернення</h3>
+                <form id="returnForm">
+                    <input type="text" id="name" placeholder="Ім'я та прізвище"
+                        required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="text" id="orderNumber"
+                        placeholder="Номер замовлення" required>
+
+                    <select id="reason" required>
+                        <option value>Причина повернення</option>
+                        <option>Товар має дефект або пошкодження</option>
+                        <option>Отриманий неправильний товар</option>
+                        <option>Товар не відповідає опису на сайті</option>
+                        <option>Інша причина</option>
+                    </select>
+
+                    <textarea id="details" placeholder="Детальний опис причини"
+                        rows="4" required></textarea>
+
+                    <button type="submit">Відправити запит на
+                        повернення</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+    document.getElementById('returnForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Ваш запит на повернення надіслано! Ми зв\'яжемося з вами найближчим часом.');
+        document.getElementById('returnForm').reset();
+    });
+</script>
+
+    </body>
+</html>

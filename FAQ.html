@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FAQ - Питання та відповіді</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+            rel="stylesheet">
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #11131a;
+            color: #ffffff;
+            padding: 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: #181b24;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #252a3a;
+        }
+
+        .faq-answer {
+            padding: 0 15px 15px 15px;
+            display: none;
+            border-top: 1px solid #252a3a;
+        }
+
+        .active .faq-answer {
+            display: block;
+        }
+
+        .active .faq-question {
+            background-color: #1f2432;
+            color: #829efc;
+        }
+    </style>
+    </head>
+    <body>
+
+        <div class="faq-container">
+            <h2>Поширені питання (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Які способи оплати приймає ваш
+                    магазин?</div>
+                <div class="faq-answer">Ми приймаємо оплату картками Visa,
+                    MasterCard, а також PayPal.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чи є гарантія на придбані
+                    комплектуючі?</div>
+                <div class="faq-answer">Так, на всі комплектуючі діє гарантія
+                    від виробника, зазвичай від 12 до 36 місяців.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Який термін доставки товару?</div>
+                <div class="faq-answer">Доставка займає від 1 до 5 робочих днів
+                    залежно від регіону.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чи можу я повернути товар, якщо він
+                    мені не підійшов?</div>
+                <div class="faq-answer">Так, повернення можливе протягом 14 днів
+                    після покупки.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чи доступна у вас збірка комп'ютера
+                    під замовлення?</div>
+                <div class="faq-answer">Так, ми пропонуємо послугу складання ПК
+                    під ваші потреби.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Як перевірити статус мого
+                    замовлення?</div>
+                <div class="faq-answer">Перевірити статус замовлення можна в
+                    розділі "Order Status" за номером замовлення.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чи пропонуєте ви знижки для постійних
+                    клієнтів?</div>
+                <div class="faq-answer">Так, у нас є програма лояльності для
+                    постійних покупців.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чи можу я отримати консультацію щодо
+                    вибору комплектуючих?</div>
+                <div class="faq-answer">Так, наші менеджери завжди готові
+                    проконсультувати вас.</div>
+            </div>
+
+        </div>
+
+        <script>
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const parent = item.parentElement;
+            parent.classList.toggle('active');
+        });
+    });
+</script>
+
+    </body>
+</html>
