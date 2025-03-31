@@ -8,25 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const rect = productsSection.getBoundingClientRect();
 
     if (rect.top <= 0) {
-      // При досягненні секції – ховаємо старе меню, показуємо нове та чат
-      document.querySelector(".old-nav").classList.remove("visible");
-      document.querySelector(".old-nav").classList.add("hidden");
-
-      document.querySelector(".new-nav").classList.remove("hidden");
-      document.querySelector(".new-nav").classList.add("visible");
-
-      document.querySelector(".cart-chat").classList.remove("hidden");
-      document.querySelector(".cart-chat").classList.add("visible");
+      document.querySelector(".old-nav").classList.replace("visible", "hidden");
+      document.querySelector(".new-nav").classList.replace("hidden", "visible");
+      document.querySelector(".cart-chat").classList.replace("hidden", "visible");
     } else {
-      // Інакше – показуємо старе меню, ховаємо нове та чат
-      document.querySelector(".old-nav").classList.remove("hidden");
-      document.querySelector(".old-nav").classList.add("visible");
-
-      document.querySelector(".new-nav").classList.remove("visible");
-      document.querySelector(".new-nav").classList.add("hidden");
-
-      document.querySelector(".cart-chat").classList.remove("visible");
-      document.querySelector(".cart-chat").classList.add("hidden");
+      document.querySelector(".old-nav").classList.replace("hidden", "visible");
+      document.querySelector(".new-nav").classList.replace("visible", "hidden");
+      document.querySelector(".cart-chat").classList.replace("visible", "hidden");
     }
   });
 
@@ -34,27 +22,27 @@ document.addEventListener("DOMContentLoaded", function () {
      2. Розширений пошук (підказки за категоріями)
   ====================================================================== */
   const categories = [
-    "Ноутбуки",
-    "Материнські плати",
-    "Відеокарти",
-    "Процесори",
-    "Оперативна пам'ять",
-    "SSD",
-    "HDD",
-    "Кулери",
-    "Водяне охолодження",
-    "Блоки живлення",
-    "Корпуси",
-    "Монітори",
-    "Проводи",
-    "Кранштейни",
-    "Коврики для миші",
-    "Мікрофони",
-    "Веб-камери",
-    "Навушники",
-    "Принтери",
-    "Миші",
-    "Клавіатури",
+    { name: "Ноутбуки", id: "laptops" },
+    { name: "Материнські плати", id: "Mainboard" },
+    { name: "Відеокарти", id: "gpu" },
+    { name: "Процесори", id: "cpu" },
+    { name: "Оперативна пам'ять", id: "ram" },
+    { name: "SSD", id: "ssd" },
+    { name: "HDD", id: "hdd" },
+    { name: "Кулери", id: "coolers" },
+    { name: "Водяне охолодження", id: "watercooling" },
+    { name: "Блоки живлення", id: "psu" },
+    { name: "Корпуси", id: "cases" },
+    { name: "Монітори", id: "monitors" },
+    { name: "Проводи", id: "cables" },
+    { name: "Кранштейни", id: "brackets" },
+    { name: "Коврики для миші", id: "mousepads" },
+    { name: "Мікрофони", id: "microphones" },
+    { name: "Веб-камери", id: "webcams" },
+    { name: "Навушники", id: "headphones" },
+    { name: "Принтери", id: "printers" },
+    { name: "Миші", id: "mouses" },
+    { name: "Клавіатури", id: "keyboards" }
   ];
 
   const searchInput = document.getElementById("searchInput");
@@ -79,22 +67,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function updateSuggestions(userInput) {
-      let filtered = [];
-      if (userInput) {
-        filtered = categories.filter((cat) =>
-          cat.toLowerCase().startsWith(userInput)
-        );
-      } else {
-        filtered = categories;
-      }
+      let filtered = categories.filter((cat) =>
+        cat.name.toLowerCase().startsWith(userInput)
+      );
+
       if (filtered.length === 0) {
-        suggestionsList.innerHTML = `<li><a style="opacity:0.6;">Нема результатів</a></li>`;
+        suggestionsList.innerHTML = `<li><a style="opacity:0.6;">Немає результатів</a></li>`;
         return;
       }
-      const html = filtered
-        .map((item) => `<li><a href="#">${item}</a></li>`)
+
+      suggestionsList.innerHTML = filtered
+        .map(
+          (item) =>
+            `<li><a href="#${item.id}" class="category-link">${item.name}</a></li>`
+        )
         .join("");
-      suggestionsList.innerHTML = html;
+
+      document.querySelectorAll(".category-link").forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 20,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
     }
   }
 });

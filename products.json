@@ -1,98 +1,56 @@
 {
-  "ASUS ROG Strix Z790-E": {
-    "Name": "ASUS ROG Strix Z790-E",
-    "Image": "/Fotos/HeaderGraphikCard.png",
+  "AsusRevealsIntelZ690": {
+    "Name": "ASUS Intel Z690",
+    "Image": "SliderImg/MainBoard/AsusRevealsIntelZ690.png",
+    "Price": "320£",
+    "Description": "Материнська плата ASUS Z690 забезпечує підтримку процесорів Intel 12/13-го покоління, DDR5, PCIe 5.0, Wi-Fi 6E та ефективне охолодження для стабільної роботи."
+  },
+  "AsusRogStrixZ790-A": {
+    "Name": "ASUS ROG Strix Z790-A",
+    "Image": "SliderImg/MainBoard/AsusRogStrixZ790-A.png",
     "Price": "340£",
-    "Description": "Материнська плата ASUS ROG Strix Z790-E Gaming WiFi – це ідеальне рішення для ентузіастів, які прагнуть максимальної продуктивності та стабільності. Оснащена чіпсетом Intel Z790, вона підтримує процесори Intel Core 13-го та 12-го поколінь, надаючи можливість розгону та ефективного охолодження."
+    "Description": "Високопродуктивна материнська плата з підтримкою процесорів Intel 13-го покоління, DDR5, PCIe 5.0, потужною системою VRM та стильним дизайном ROG."
   },
-  "MainBoardAorusElite": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite ви її заповните надовго",
-    "Image": "/Fotos/HeaderGraphikCard.png"
+  "AsusZ590series11thGen": {
+    "Name": "ASUS Z590 11th Gen",
+    "Image": "SliderImg/MainBoard/AsusZ590series11th.png",
+    "Price": "270£",
+    "Description": "Чіпсет Z590 для Intel 10/11-го покоління, підтримка PCIe 4.0, Wi-Fi 6, ефективне охолодження VRM та надійність для геймерів та ентузіастів."
   },
-   "MainBoardAsusRogZ790-e": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "/Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
+  "AsusZ59011thGen": {
+    "Name": "ASUS Z590 11th Gen",
+    "Image": "SliderImg/MainBoard/AsusZ59011thGen.png",
+    "Price": "250£",
+    "Description": "Материнська плата ASUS Z590 для Intel 11-го покоління, підтримка PCIe 4.0, M.2 слотів, стабільна робота при високих навантаженнях."
   },
-  "MainBoardAorusElite-x": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "/Fotos/HeaderGraphikCard.png"
+  "GIGABYTE_Z...O_AORUS": {
+    "Name": "GIGABYTE AORUS Z-series",
+    "Image": "SliderImg/MainBoard/GIGABYTE_Z490_AORUS.png",
+    "Price": "300£",
+    "Description": "Материнська плата GIGABYTE AORUS для Intel Z-серії, підтримка DDR5, PCIe 5.0, M.2, Wi-Fi 6E, преміальні компоненти для екстремальної продуктивності."
   },
-    "MainBoardAsusRogZ790-v": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "/Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
+  "GigabyteZ59...rusMaster": {
+    "Name": "GIGABYTE Z590 AORUS Master",
+    "Image": "SliderImg/MainBoard/GigabyteZ590AorusMaster.png",
+    "Price": "280£",
+    "Description": "Флагманська модель з підтримкою Intel 10/11-го покоління, PCIe 4.0, потужною підсистемою живлення та розширеними можливостями розгону."
   },
-  "MainBoardAorusElite-f": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "Fotos/HeaderGraphikCard.png"
+  "MSI-MPG_X670E": {
+    "Name": "MSI MPG X670E",
+    "Image": "SliderImg/MainBoard/MSI-MPG_X670E.png",
+    "Price": "350£",
+    "Description": "Преміальна материнська плата для процесорів AMD Ryzen 7000, підтримка DDR5, PCIe 5.0, розширена система охолодження та стильний дизайн."
   },
-   "MainBoardAsusRogZ790-y": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
+  "TUFSabertoothZ170Mark": {
+    "Name": "ASUS TUF Sabertooth Z170 Mark",
+    "Image": "SliderImg/MainBoard/TUFSabertoothZ170Mark.png",
+    "Price": "200£",
+    "Description": "Надійна материнська плата з серії TUF для Intel 6/7-го покоління, військовий клас компонентів, тривала гарантія та посилена система охолодження."
   },
-  "MainBoardAorusElite-e": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "Fotos/HeaderGraphikCard.png"
-  },
-  "MainBoardAsusRogZ790k": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
-  },
-  "MainBoardAorusElitep": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite ви її заповните надовго",
-    "Image": "Fotos/HeaderGraphikCard.png"
-  },
-   "MainBoardAsusRogZ790-ek": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
-  },
-  "MainBoardAorusElite-xj": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "Fotos/HeaderGraphikCard.png"
-  },
-    "MainBoardAsusRogZ790-vg": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
-  },
-  "MainBoardAorusElite-fa": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "Fotos/HeaderGraphikCard.png"
-  },
-   "MainBoardAsusRogZ790-ye": {
-    "Name": "MainBoard Asus Rog Z790",
-    "Image": "Fotos/HeaderGraphikCard.png",
-    "Price": "228£",
-    "Description": "Материнська плата Asus ROG Z790 для Intel 12/13-го покоління з чіпсетом Z790 підтримує DDR5 і PCIe 5.0, забезпечує стабільну роботу завдяки високоякісному VRM і ефективному охолодженню, має численні USB, M.2 і мережеві порти, а також стильний дизайн з підсвічуванням та інтуїтивно зрозумілим BIOS."
-  },
-  "MainBoardAorusElite-ef": {
-    "Name": "MainBoard Aorus Elite",
-    "Price": "190£",
-    "Description": "Материнська плата Aorus Elite...",
-    "Image": "Fotos/HeaderGraphikCard.png"
+  "MSI-MPG_X670E4": {
+    "Name": "MSI-MPG_X670E",
+    "Image": "SliderImg/MainBoard/MSI-MPG_X670E.png",
+    "Price": "200£",
+    "Description": "Надійна материнська плата з серії TUF для Intel 6/7-го покоління, військовий клас компонентів, тривала гарантія та посилена система охолодження."
   }
 }
