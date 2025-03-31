@@ -1,0 +1,56 @@
+{
+  "ASUS_RTX_4070TI": {
+    "Name": "ASUS RTX 4070TI",
+    "Image": "SliderImg/Gpu/ASUS_RTX_4070TI.png",
+    "Price": "750£",
+    "Description": "ASUS GeForce RTX 4070 Ti — високопродуктивна відеокарта з 12 ГБ GDDR6X пам’яті та частотою GPU до 2760 МГц, що забезпечує відмінну продуктивність у сучасних іграх та графічних додатках."
+  },
+   "AsusTUF_RTX4090": {
+    "Name": "Asus TUF RTX4090",
+    "Image": "SliderImg/Gpu/AsusTUF_RTX4090.png",
+    "Price": "1500£",
+    "Description": "ASUS TUF Gaming GeForce RTX 4090 OC Edition — це флагманська відеокарта, що поєднує передові технології та надійний дизайн серії TUF. Вона побудована на архітектурі NVIDIA Ada Lovelace та оснащена 24 ГБ пам’яті GDDR6X з 384-бітною шиною, забезпечуючи виняткову продуктивність для сучасних ігор та ресурсомістких додатків. Кількість ядер CUDA становить 16 384, а тактові частоти в режимі OC досягають 2 595 МГц."
+  },
+   "AsusRogStrixRTX4080super": {
+    "Name": "Asus Rog Strix RTX 4080super",
+    "Image": "SliderImg/Gpu/AsusRogStrixRTX4080super.png",
+    "Price": "1150£",
+    "Description": "ASUS ROG Strix GeForce RTX 4080 SUPER 16GB GDDR6X OC Edition — це високопродуктивна відеокарта, створена для ентузіастів і геймерів, які прагнуть максимальних можливостей. Вона побудована на базі архітектури NVIDIA Ada Lovelace та оснащена 16 ГБ пам’яті GDDR6X, що забезпечує відмінну продуктивність у сучасних іграх та додатках"
+  },
+   "GIGABYTE_RTX3080": {
+    "Name": "GIGABYTE RTX 3080",
+    "Image": "SliderImg/Gpu/GIGABYTE_RTX3080.png",
+    "Price": "550£",
+    "Description": "GIGABYTE GeForce RTX 3080 — потужна відеокарта на архітектурі NVIDIA Ampere з 10 ГБ GDDR6X пам’яті, системою охолодження WINDFORCE 3X та підтримкою Ray Tracing і DLSS для плавного геймінгу у 4K."
+  },
+   "AsusTUFRadeonRX9070XT": {
+    "Name": "Asus TUF Radeon RX-9070-XT",
+    "Image": "SliderImg/Gpu/AsusTUFRadeonRX9070XT.png",
+    "Price": "990£",
+    "Description": "ASUS TUF Gaming Radeon RX 9070 XT OC Edition — високопродуктивна відеокарта з 16 ГБ GDDR6 пам’яті, побудована на архітектурі RDNA 4, що забезпечує відмінну продуктивність у сучасних іграх та підтримує технології Ray Tracing і FSR 4 для покращеного візуального досвіду."
+  },
+   "iChillGeforceRTX1070ti_Ultra": {
+    "Name": "iChill Geforce RTX 1070ti Ultra",
+    "Image": "SliderImg/Gpu/iChillGeforceRTX1070ti_Ultra.png",
+    "Price": "240£",
+    "Description": "iChill GeForce RTX 1070 Ti Ultra — продуктивна відеокарта з 8 ГБ GDDR5 пам’яті, потужною тривентиляторною системою охолодження та підтримкою DirectX 12, що забезпечує стабільний FPS у сучасних іграх"
+  },
+   "MsiGeforceRTX2080ti": {
+    "Name": "MSI Geforce RTX 2080ti",
+    "Image": "SliderImg/Gpu/MsiGeforceRTX2080ti.png",
+    "Price": "380£",
+    "Description": "MSI GeForce RTX 2080 Ti — потужна відеокарта з 11 ГБ GDDR6 пам’яті, підтримкою Ray Tracing і DLSS, що забезпечує високий FPS у 4K-іграх, а система охолодження Twin Frozr гарантує ефективне відведення тепла."
+  },
+   "MSI_AMD_Radeon_RX6900XT": {
+    "Name": "MSI AMD Radeon RX 6900 XT",
+    "Image": "SliderImg/Gpu/MSI_AMD_Radeon_RX6900XT.png",
+    "Price": "690£",
+    "Description": "MSI AMD Radeon RX 6900 XT — флагманська відеокарта з 16 ГБ GDDR6 пам’яті, архітектурою RDNA 2, підтримкою Ray Tracing і технологій Smart Access Memory для плавного геймінгу у 4K."
+  },
+   "AsusROGStrixRTX3050": {
+    "Name": "Asus ROG Strix RTX3050",
+    "Image": "SliderImg/Gpu/AsusROGStrixRTX3050.png",
+    "Price": "280£",
+    "Description": "ASUS ROG Strix GeForce RTX 3050 — ігрова відеокарта з 8 ГБ GDDR6 пам’яті, підтримкою Ray Tracing і DLSS, яка забезпечує стабільну продуктивність у 1080p-іграх, а фірмова система охолодження ROG Strix гарантує ефективне відведення тепла."
+  }
+}

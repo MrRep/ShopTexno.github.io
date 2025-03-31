@@ -1,0 +1,50 @@
+{
+  "ASUS_Notebook_ROG_Zephyrus": {
+    "Name": "ASUS Notebook ROG Zephyrus",
+    "Image": "SliderImg/Leptop/ASUS_Notebook_ROG_Zephyrus.png",
+    "Price": "2700£",
+    "Description": "ASUS ROG Zephyrus — це потужний ігровий ноутбук із процесором AMD Ryzen 9, відеокартою RTX 3080, 32 ГБ DDR5, SSD 1 ТБ та 15.6” 240 Гц дисплеєм, що забезпечує високу продуктивність у компактному корпусі за £2,700."
+  },
+  "ASUS_ROG_STRIX_G532LW": {
+    "Name": "ASUS ROG STRIX G532LW",
+    "Price": "1800£",
+    "Description": "ASUS ROG Strix G532LW — це ігровий ноутбук із процесором Intel Core i7-10875H, відеокартою RTX 2070, 16 ГБ RAM, SSD 1 ТБ і 15.6” 144 Гц дисплеєм, що забезпечує високу швидкодію для ігор і роботи",
+    "Image": "SliderImg/Leptop/ASUS_ROG_STRIX_G532LW.png"
+  },
+   "MacBook_2023_M3": {
+    "Name": "MacBook 2023 M3",
+    "Image": "SliderImg/Leptop/MacBook_2023_M3.png",
+    "Price": "2000£",
+    "Description": "MacBook Pro 2023 M3 — це потужний ноутбук із чіпом Apple M3, 16 ГБ RAM, SSD 512 ГБ, 14” Liquid Retina XDR дисплеєм, автономністю до 22 годин та преміальним дизайном для продуктивності й креативних завдань"
+  },
+  "MacBook_Air_13_M1": {
+    "Name": "MacBook Air 13 M1",
+    "Price": "900£",
+    "Description": "MacBook Air 13” M1 — це ультратонкий ноутбук із чіпом Apple M1, 8 ГБ RAM, SSD 256 ГБ, Retina-дисплеєм, тихою безвентиляторною конструкцією та автономністю до 18 годин, ідеальний для роботи та розваг",
+    "Image": "SliderImg/Leptop/MacBook_Air_13_M1.png"
+  },
+    "Macbook_Air_M2": {
+    "Name": "Macbook Air M2",
+    "Image": "SliderImg/Leptop/Macbook_Air_M2_.png",
+    "Price": "1050£",
+    "Description": "MacBook Air 13” M2 — це стильний і потужний ноутбук із чіпом Apple M2, 8 ГБ RAM, SSD 256 ГБ, яскравим Liquid Retina дисплеєм, безшумною конструкцією та автономністю до 18 годин, ідеальний для роботи та навчання"
+  },
+  "MSI_Titan_GT777": {
+    "Name": "MSI Titan GT777",
+    "Price": "4500£",
+    "Description": "MSI Titan GT77 — це ультимативний ігровий ноутбук із потужним процесором Intel Core i9, відеокартою NVIDIA RTX 4090, 64 ГБ RAM, Mini LED 4K 144 Гц дисплеєм, механічною клавіатурою Cherry MX та охолодженням Cooler Boost Titan",
+    "Image": "SliderImg/Leptop/MSI_Titan_GT777.png"
+  },
+   "MSI_Raider_GE77Hx": {
+    "Name": "MSI Raider GE77Hx",
+    "Image": "SliderImg/Leptop/MSI_Raider_GE77Hx.png",
+    "Price": "3200£",
+    "Description": "MSI Raider GE77HX — це потужний ігровий ноутбук із процесором Intel Core i9-12900HX, відеокартою NVIDIA RTX 3080 Ti, 32 ГБ DDR5 RAM, дисплеєм 17,3” QHD 240 Гц і підсвіткою Mystic Light"
+  },
+  "ROG_ZEPHYRUS_G14": {
+    "Name": "ROG ZEPHYRUS G14",
+    "Price": "1900£",
+    "Description": "ROG Zephyrus G14 — це ультрапортативний ігровий ноутбук із процесором AMD Ryzen 9 7940HS, відеокартою RTX 4060, 16 ГБ DDR5 RAM, 14” QHD 165 Гц дисплеєм та стильним корпусом із AniMe Matrix",
+    "Image": "SliderImg/Leptop/ROG_ZEPHYRUS_G14.png"
+  }
+}

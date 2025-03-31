@@ -25,24 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: "Ноутбуки", id: "laptops" },
     { name: "Материнські плати", id: "Mainboard" },
     { name: "Відеокарти", id: "gpu" },
-    { name: "Процесори", id: "cpu" },
-    { name: "Оперативна пам'ять", id: "ram" },
+    { name: "Процесори", id: "Cpu" },
+    { name: "Оперативна пам'ять", id: "ram" },//
     { name: "SSD", id: "ssd" },
-    { name: "HDD", id: "hdd" },
-    { name: "Кулери", id: "coolers" },
-    { name: "Водяне охолодження", id: "watercooling" },
-    { name: "Блоки живлення", id: "psu" },
-    { name: "Корпуси", id: "cases" },
-    { name: "Монітори", id: "monitors" },
-    { name: "Проводи", id: "cables" },
-    { name: "Кранштейни", id: "brackets" },
-    { name: "Коврики для миші", id: "mousepads" },
-    { name: "Мікрофони", id: "microphones" },
-    { name: "Веб-камери", id: "webcams" },
-    { name: "Навушники", id: "headphones" },
-    { name: "Принтери", id: "printers" },
-    { name: "Миші", id: "mouses" },
-    { name: "Клавіатури", id: "keyboards" }
+    { name: "HDD", id: "ssd" },
+    { name: "Водяне охолодження", id: "watercooling" },//
+    { name: "Блоки живлення", id: "psu" },//
+    { name: "Корпуси", id: "cases" },//
+    { name: "Монітори", id: "monitors" },//
+    { name: "Миші", id: "mouses" },//
+    { name: "Клавіатури", id: "keyboards" }//
   ];
 
   const searchInput = document.getElementById("searchInput");

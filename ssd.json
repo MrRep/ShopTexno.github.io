@@ -1,0 +1,56 @@
+{
+  "Samsung_8TB": {
+    "Name": "Samsung SSD 8TB",
+    "Image": "SliderImg/SSD-HDD/Samsung_8TB.png",
+    "Price": "600£",
+    "Description": "Samsung 870 QVO — внутрішній 2,5-дюймовий SSD з інтерфейсом SATA III, швидкістю читання до 560 МБ/с і запису до 530 МБ/с, побудований на технології V-NAND 4-bit MLC, що забезпечує надійність та високу продуктивність "
+  },
+   "Samsung_990_PRO_2TB": {
+    "Name": "Samsung 990-PRO 2TB",
+    "Image": "SliderImg/SSD-HDD/Samsung_990_PRO_2TB.png",
+    "Price": "200£",
+    "Description": "Samsung 990 PRO 2TB — високопродуктивний внутрішній SSD формату M.2 з інтерфейсом PCIe 4.0, що забезпечує швидкість послідовного читання до 7450 МБ/с і запису до 6900 МБ/с, ідеально підходить для ігор, редагування відео та обробки великих даних. "
+    },
+   "Western_Digital_2TB_SATA_III": {
+    "Name": "Western Digital 2TB SATA_III",
+    "Image": "SliderImg/SSD-HDD/Western_Digital_2TB_SATA_III.png",
+    "Price": "£",
+    "Description": ""
+  },
+   "SSD_480GB_SATA_III": {
+    "Name": "SSD 480GB SATA_III",
+    "Image": "SliderImg/SSD-HDD/SSD_480GB_SATA_III.png",
+    "Price": "65£",
+    "Description": "Жорсткий диск Western Digital Blue 2TB — надійний внутрішній накопичувач формату 3.5” з інтерфейсом SATA III, швидкістю обертання шпинделя 5400 об/хв та кеш-пам’яттю 64 МБ, що забезпечує стабільну продуктивність для зберігання великих обсягів даних. "
+  },
+   "SSD_970_PRO_Samsung": {
+    "Name": "SSD 970PRO Samsung",
+    "Image": "SliderImg/SSD-HDD/SSD_970_PRO_Samsung.png",
+    "Price": "240£",
+    "Description": "Samsung 970 PRO — високопродуктивний внутрішній SSD формату M.2 з інтерфейсом PCIe 3.0 x4, що забезпечує швидкість послідовного читання до 3500 МБ/с і запису до 2700 МБ/с, ідеально підходить для інтенсивних обчислювальних завдань та професійного використання."
+  },
+    "1TB_Wester_Digital_HD": {
+     "Name": "1TB Wester Digital HD",
+     "Image": "SliderImg/SSD-HDD/1TB_Wester_Digital_HD.png",
+     "Price": "55£",
+     "Description": "Жорсткий диск Western Digital 1TB (WD10EZRZ) — надійний внутрішній накопичувач формату 3.5” з інтерфейсом SATA III, швидкістю обертання шпинделя 5400 об/хв та кеш-пам’яттю 64 МБ, що забезпечує стабільну продуктивність для зберігання великих обсягів даних.  "
+      },
+    "SSD_2TB": {
+     "Name": "SSD 2TB",
+     "Image": "SliderImg/SSD-HDD/SDD_2TB.png",
+     "Price": "80£",
+     "Description": "SSD 2TB — це внутрішній твердотільний накопичувач формату 2.5” з інтерфейсом SATA III, що забезпечує високу швидкість читання та запису даних, ідеально підходить для модернізації ПК або ноутбука."
+      },
+    "SSD_M2_4TB_Aser_Predator": {
+     "Name": "SSD M2 4TB Aser Predator",
+     "Image": "SliderImg/SSD-HDD/SSD_M2_4TB_Aser_Predator.png",
+     "Price": "180£",
+     "Description": "SSD M2 4TB Aser Predator — це високопродуктивний твердотільний накопичувач формату M.2 з інтерфейсом PCIe 4.0, що забезпечує швидкість читання до 7000 МБ/с і запису до 5000 МБ/с, ідеально підходить для геймерів та професіоналів."
+      },
+    "DifferenseHD_8TB": {
+     "Name": "Differense HD 8TB",
+     "Image": "SliderImg/SSD-HDD/DifferenseHD_8TB.png",
+     "Price": "280£",
+     "Description": "Differense HD 8TB — це зовнішній жорсткий диск формату 3.5” з інтерфейсом USB 3.0, що забезпечує високу швидкість передачі даних та великий обсяг пам’яті для зберігання файлів, ідеально підходить для резервного копіювання та архівування даних."
+      }
+}
