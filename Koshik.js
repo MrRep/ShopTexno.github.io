@@ -14,13 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    let totalSum = 0;
+    let totalSum = 0; 
 
     cart.forEach((item, index) => {
       totalSum += item.totalPrice;
       cartContainer.innerHTML += `
         <div class="cart-item">
+        <div class="cart-item-image">
           <img src="${item.image}" alt="${item.name}">
+          </div>
           <div class="cart-item-details">
             <h3>${item.name}</h3>
             <p>Ціна за одиницю: ${item.price}£</p>

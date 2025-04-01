@@ -26,15 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: "Материнські плати", id: "Mainboard" },
     { name: "Відеокарти", id: "gpu" },
     { name: "Процесори", id: "Cpu" },
-    { name: "Оперативна пам'ять", id: "ram" },//
     { name: "SSD", id: "ssd" },
     { name: "HDD", id: "ssd" },
-    { name: "Водяне охолодження", id: "watercooling" },//
     { name: "Блоки живлення", id: "psu" },
     { name: "Корпуси", id: "cases" },
-    { name: "Монітори", id: "monitors" },//
-    { name: "Миші", id: "mouses" },//
-    { name: "Клавіатури", id: "keyboards" }//
   ];
 
   const searchInput = document.getElementById("searchInput");
