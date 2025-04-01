@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: "SSD", id: "ssd" },
     { name: "HDD", id: "ssd" },
     { name: "Водяне охолодження", id: "watercooling" },//
-    { name: "Блоки живлення", id: "psu" },//
-    { name: "Корпуси", id: "cases" },//
+    { name: "Блоки живлення", id: "psu" },
+    { name: "Корпуси", id: "cases" },
     { name: "Монітори", id: "monitors" },//
     { name: "Миші", id: "mouses" },//
     { name: "Клавіатури", id: "keyboards" }//
