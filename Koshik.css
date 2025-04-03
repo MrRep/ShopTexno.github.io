@@ -136,10 +136,6 @@ header {
   text-align: center;
 }
 
-.cart-page h1 {
-  font-size: 100px;
-  margin-bottom: 50px;
-}
 
 #cart-container {
   display: flex;
@@ -174,12 +170,12 @@ header {
 }
 
 .cart-item-details h3 {
-  font-size: 36px;
+  font-size: 28px;
   margin-bottom: 10px;
 }
 
 .cart-item-details p {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
@@ -198,7 +194,7 @@ header {
   cursor: pointer;
   color: white;
   border: none;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .cart-item-quantity input {
@@ -225,7 +221,7 @@ header {
 
 .cart-summary {
   margin-top: 40px;
-  font-size: 24px;
+  font-size: 28px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
