@@ -103,10 +103,17 @@ function addToCart(cartItem) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-const modal = document.getElementById('productModal');
-modal.addEventListener('click', (e) => {
-  if (e.target === modal || e.target.classList.contains('SdModalClose')) {
-    modal.style.display = 'none';
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('productModal');
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      console.log('Клік по:', e.target);
+      if (e.target === modal || e.target.classList.contains('SdModalClose')) {
+        console.log('Модальне вікно закривається');
+        modal.style.display = 'none';
+      }
+    });
   }
 });
 
