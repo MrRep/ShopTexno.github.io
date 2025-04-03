@@ -106,15 +106,19 @@ function addToCart(cartItem) {
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('productModal');
 
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      console.log('Клік по:', e.target);
-      if (e.target === modal || e.target.classList.contains('SdModalClose')) {
-        console.log('Модальне вікно закривається');
-        modal.style.display = 'none';
-      }
-    });
+  if (!modal) {
+    console.error('Модальне вікно не знайдено!');
+    return;
   }
+
+  modal.addEventListener('click', (e) => {
+    console.log('Клік по:', e.target);
+
+    if (e.target === modal || e.target.classList.contains('SdModalClose')) {
+      console.log('Модальне вікно закривається');
+      modal.style.display = 'none';
+    }
+  });
 });
 
 window.addEventListener('keydown', e => {
